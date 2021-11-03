@@ -1,4 +1,4 @@
-export * from './before-leave';
+export * from './composable';
 export * from './core';
 export * from './entry';
 export * from './history-strategy';

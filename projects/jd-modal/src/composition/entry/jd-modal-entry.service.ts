@@ -99,9 +99,27 @@ export class JdModalEntryService {
         this.hostElement.focus();
       }
     } else if (evt.type === ModalEventType.CLOSE) {
+      // popState 가 일어나면 history 뒤로가기 처리가 된다.
       if (this.usedHistoryState) {
         this.popHistoryState();
+        // beforeLeave 가 attach 된 상태인 경우에는 무시한다.
+        if (this.modalRef.isAttachedBeforeLeave) {
+          /**
+           * 위에 popHistoryState() 는 attach 상태 상관없이 실행 되어야 한다.(history.back 이 된다)
+           * 1. history.back 이 일어나면 beforeLeave 쪽에 등록된 popstate 핸들러가 동작한다.
+           * 2. 핸들러 내부에서 history.forward 를 해서 다시 원상태의 history 로 돌아가고,
+           *   beforeLeave 에 등록한 confirm 이 동작하게 된다.
+           * 3. confirm 의 응답(true|false) 여부에 따라 동작이 분기 된다.
+           *  - confirm 이 true(확인) 이면
+           *   beforeLeave.detach() (isAttachedBeforeLeave 가 false),
+           *   modalRef.close() 순서로 호출되어 위 이벤트(ModalEventType.CLOSE)로 다시 들어오게 되고 이 조건을 지나갈 수 있다.
+           *   2번에서 forward 된 history 는 위 popHistoryState 에서 back 되기 때문에 history 는 복구된다. (forward 가 되기 때문에 쓰레기 history 는 1개 남는 문제가 있긴하다.)
+           *  - confirm 이 false(취소) 이면 아무런 동작을 하지 않기 때문에
+           */
+          return;
+        }
       }
+
       this.isOpening = false;
       this.isOpened = false;
       this.isClosing = true;

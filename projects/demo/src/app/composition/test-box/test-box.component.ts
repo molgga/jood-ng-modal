@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { JdModalRefToken, JdModalRef, JdModalBeforeLeaveService } from '@jood/ng-modal';
+import { JdModalRefToken, JdModalRef } from '@jood/ng-modal';
 
 @Component({
-  providers: [JdModalBeforeLeaveService],
+  providers: [],
   selector: 'test-box',
   templateUrl: './test-box.component.html',
-  styleUrls: ['./test-box.component.css'],
+  styleUrls: ['./test-box.component.scss'],
 })
 export class TestBoxComponent implements OnInit {
   constructor(@Inject(JdModalRefToken) public modalRef: JdModalRef) {}

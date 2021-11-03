@@ -1,4 +1,7 @@
 test-box2 works!
-<div>id: {{ modalRef.id }}</div>
-<div>index: {{ modalRef.index }}</div>
+<div>id: {{ modalRef.id }} / index: {{ modalRef.index }}</div>
+<div>
+  <input class="test-input" [(ngModel)]="testChangeValue" placeholder="change value" />
+  <span class="test-label" [class.is-changed]="testChangeValue !== ''">before leave!</span>
+</div>
 <button (click)="onClose()">onClose</button>

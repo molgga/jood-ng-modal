@@ -1,0 +1,7 @@
+<div class="head">test-box works!</div>
+<div #refScrollElement class="scroll-container">
+  <div *ngFor="let item of testScrollBoxList" class="test-box">
+    <div>id: {{ modalRef.id }} / index: {{ modalRef.index }}</div>
+    <button (click)="onClose()">onClose</button>
+  </div>
+</div>

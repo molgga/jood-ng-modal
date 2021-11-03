@@ -240,14 +240,10 @@ export class JdModalRef<R = any, D = any, C = any> {
    */
   close(result?: R): void {
     this.modalResult = result;
-    if (this.attachedBeforeLeave) {
-      history.back();
-    } else {
-      this.openerSubject.next({
-        type: ModalEventType.CLOSE,
-        modalRef: this,
-      });
-    }
+    this.openerSubject.next({
+      type: ModalEventType.CLOSE,
+      modalRef: this,
+    });
   }
 
   /**
