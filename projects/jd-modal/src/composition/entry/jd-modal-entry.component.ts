@@ -8,16 +8,12 @@ import { JdModalEntryService } from './jd-modal-entry.service';
   templateUrl: './jd-modal-entry.component.html',
   styleUrls: ['./jd-modal-entry.component.scss'],
 })
-export class JdModalEntryComponent implements OnInit {
+export class JdModalEntryComponent {
   constructor(
     @Inject(JdModalRefToken) private modalRef: JdModalRef,
     private entryService: JdModalEntryService,
     private refModalContainer: ElementRef<HTMLElement>
   ) {}
-
-  ngOnInit() {
-    console.log('JdModalEntryComponent ngOnInit');
-  }
 
   ngAfterViewInit() {
     this.entryService.setHostElement(this.refModalContainer.nativeElement);
@@ -30,20 +26,22 @@ export class JdModalEntryComponent implements OnInit {
   }
 
   @ViewChild('refModalPanel') refModalPanel!: ElementRef<HTMLElement>;
+  @HostBinding('tabindex') tabIndex = 0;
 
   @HostBinding('class')
   get hostClass() {
+    console.log('$$$$$ hostClass');
     return this.entryService.classes;
   }
 
   @HostBinding('style')
   get hostStyle() {
+    console.log('##### hostStyle');
     return this.entryService.styleSet.modal;
   }
 
-  @HostBinding('tabindex') tabIndex = 0;
-
   get styles() {
+    console.log('@@@@@ styles');
     return this.entryService.styleSet;
   }
 

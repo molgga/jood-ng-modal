@@ -17,6 +17,11 @@ export class AppComponent {
     jdModalService.setUseHistoryState(true);
   }
 
+  get myTitle() {
+    console.log('################## AppComponent title');
+    return this.title;
+  }
+
   onClick1() {
     this.jdModalService.open({
       component: TestBoxComponent,
