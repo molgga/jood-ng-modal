@@ -18,7 +18,6 @@ export class AppComponent {
   }
 
   get myTitle() {
-    console.log('################## AppComponent title');
     return this.title;
   }
 

@@ -30,18 +30,15 @@ export class JdModalEntryComponent {
 
   @HostBinding('class')
   get hostClass() {
-    console.log('$$$$$ hostClass');
     return this.entryService.classes;
   }
 
   @HostBinding('style')
   get hostStyle() {
-    console.log('##### hostStyle');
     return this.entryService.styleSet.modal;
   }
 
   get styles() {
-    console.log('@@@@@ styles');
     return this.entryService.styleSet;
   }
 

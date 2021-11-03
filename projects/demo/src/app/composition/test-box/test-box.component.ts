@@ -10,14 +10,7 @@ import { JdModalRefToken, JdModalRef } from '@jood/ng-modal';
 export class TestBoxComponent implements OnInit {
   constructor(@Inject(JdModalRefToken) public modalRef: JdModalRef) {}
 
-  get test1() {
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ foo');
-    return 'foo';
-  }
-
-  ngOnInit() {
-    // setInterval(() => console.log('tick'), 1000);
-  }
+  ngOnInit() {}
 
   onClose() {
     this.modalRef.close();

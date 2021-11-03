@@ -10,10 +10,7 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "jd-modal": ["dist/jd-modal/jd-modal", "dist/jd-modal"],
-      "@jood/ng-modal": [
-        "projects/jd-modal/src/public-api.ts",
-        "projects/jd-modal/src/*"
-      ]
+      "@jood/ng-modal": ["projects/jd-modal/src/public-api.ts", "projects/jd-modal/src/*"]
     },
     "sourceMap": true,
     "declaration": false,
