@@ -1,6 +1,5 @@
 import { Component, ElementRef, HostBinding, Inject, OnInit, ViewChild } from '@angular/core';
-import { JdModalRefToken } from '../core';
-import { JdModalRef } from '../core/jd-modal.ref';
+import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
 import { JdModalEntryService } from './jd-modal-entry.service';
 
 @Component({

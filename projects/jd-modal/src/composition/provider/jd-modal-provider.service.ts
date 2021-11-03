@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { JdModalService, JdModalRef, ModalState } from '../core';
+import { JdModalService } from '../core/jd-modal.service';
+import { JdModalRef } from '../core/jd-modal.ref';
+import { ModalState } from '../core/types';
 
 @Injectable()
 export class JdModalProviderService {

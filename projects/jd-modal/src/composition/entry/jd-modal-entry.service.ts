@@ -1,14 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import {
-  JdModalRefToken,
-  JdModalService,
-  JdModalRef,
-  ModalState,
-  ModalEvent,
-  ModalEventType,
-  ModalPopStateEvent,
-} from '../core';
+import { JdModalService } from '../core/jd-modal.service';
+import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
+import { ModalState, ModalEvent, ModalEventType, ModalPopStateEvent } from '../core/types';
 import { OpenStrategyStyleSet } from '../open-strategy';
 
 type HandleLocationPopState = (evt: ModalPopStateEvent) => void;

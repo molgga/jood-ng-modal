@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { JdModalRefToken, JdModalService, JdModalRef, ModalEventType } from '../core';
+import { JdModalService } from '../core/jd-modal.service';
+import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
+import { ModalEventType } from '../core/types';
 
 interface PullDownConfig {
   /**

@@ -1,5 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
-import { JdModalRefToken, ModalPopStateEvent, JdModalService, JdModalRef } from '../core';
+import { JdModalService } from '../core/jd-modal.service';
+import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
+import { ModalPopStateEvent } from '../core/types';
 
 type CastFunction<T> = () => T | Promise<T>;
 

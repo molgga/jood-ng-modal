@@ -1,6 +1,9 @@
+import { InjectionToken } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { OpenStrategy, StackNormal } from '../open-strategy';
 import { ModalEvent, ModalEventType, ModalData, EntryComponentType } from './types';
+
+export const JdModalRefToken = new InjectionToken<string>('JdModalRefToken');
 
 /**
  * 하나의 모달 (정보)

@@ -1,5 +1,5 @@
 import { ComponentFactoryResolver, Directive, Inject, ViewContainerRef } from '@angular/core';
-import { JdModalRefToken, JdModalRef } from '../core';
+import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
 
 @Directive({
   selector: '[jdModalComponentResolver]',
