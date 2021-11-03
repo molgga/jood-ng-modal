@@ -1,0 +1,8 @@
+.nuxt/
+node_modules/
+dist/
+index.html
+*.md
+*.yml
+*.sh
+*.spec.ts

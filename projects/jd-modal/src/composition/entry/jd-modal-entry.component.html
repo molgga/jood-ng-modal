@@ -1,0 +1,8 @@
+<div class="overlay" [style]="styles.overlay" (click)="onOverlayClick($event)"></div>
+<div #refModalPanel class="modal-panel">
+  <div class="pivot" [style]="styles.pivot">
+    <div class="content">
+      <ng-container jdModalComponentResolver></ng-container>
+    </div>
+  </div>
+</div>

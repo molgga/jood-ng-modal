@@ -1,0 +1,8 @@
+<div class="appender">
+  <ng-container
+    *ngFor="let modalRef of modalList; let i = index; trackBy: trackModalId"
+    jdModalEntryResolver
+    [modalRef]="modalRef"
+    [modalIndex]="i"
+  ></ng-container>
+</div>
