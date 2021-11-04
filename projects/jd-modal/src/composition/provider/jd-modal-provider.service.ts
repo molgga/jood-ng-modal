@@ -8,9 +8,9 @@ import { ModalState } from '../core/types';
 export class JdModalProviderService {
   constructor(private modalService: JdModalService) {}
 
+  modalList: JdModalRef[] = [];
   listener!: Subscription;
   animateTimer: any = null;
-  modalList: JdModalRef[] = [];
   isEmptied = true;
 
   get classes() {
@@ -22,7 +22,6 @@ export class JdModalProviderService {
   }
 
   onChangeModalState(modalState: ModalState) {
-    console.log('onChangeModalState');
     const { modals } = modalState;
     const hasModal = !!(modals && modals.length);
     this.modalList = modals;

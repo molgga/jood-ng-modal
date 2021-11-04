@@ -12,7 +12,6 @@ export class JdModalComponentResolver {
   ) {}
 
   ngOnInit() {
-    console.log('jdModalComponentResolver ngOnInit');
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.modalRef.component);
     this.viewContainerRef.clear();
     this.viewContainerRef.createComponent(componentFactory);

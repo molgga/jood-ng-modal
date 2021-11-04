@@ -1,5 +1,8 @@
 import { HistoryStrategy } from './types';
 
+/**
+ * history state 관리.
+ */
 export class HistoryStateStrategy implements HistoryStrategy {
   touch(currentServiceId: number, current: number) {
     const { current: before } = this.getStateOfHistory(currentServiceId);

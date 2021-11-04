@@ -1,5 +1,8 @@
 import { OpenStrategy } from './types';
 
+/**
+ * 중앙에 쌓임.
+ */
 export class StackNormal implements OpenStrategy {
   shadow() {
     return {

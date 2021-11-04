@@ -30,7 +30,6 @@ export class JdModalEntryService {
   safeTiming = 0;
   usedHistoryState = false;
   usedBlockBodyScroll = false;
-
   isOpening = false;
   isOpened = false;
   isClosing = false;

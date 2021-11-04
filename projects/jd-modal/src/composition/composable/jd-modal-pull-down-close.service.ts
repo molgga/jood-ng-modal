@@ -20,7 +20,7 @@ interface PullDownConfig {
 }
 
 /**
- * 모달 아래로 드래그 해서 닫기
+ * 모달 아래로 드래그 해서 닫기 기능
  */
 @Injectable()
 export class JdModalPullDownCloseService {
@@ -68,7 +68,9 @@ export class JdModalPullDownCloseService {
     this.triggerReleaseMultiple = triggerReleaseGap / 2;
   }
 
-  // 초기화
+  /**
+   * 초기화
+   */
   init() {
     document.addEventListener('touchstart', this.handleTouchStart);
     document.addEventListener('touchend', this.handleTouchEnd);
@@ -91,7 +93,11 @@ export class JdModalPullDownCloseService {
     this.listener.add(observeRefOpener);
   }
 
-  // document touchstart
+  /**
+   * document touchstart
+   * @param evt
+   * @returns
+   */
   protected onTouchStart(evt: TouchEvent) {
     if (!this.modalPanelElement) return;
     if (this.holding) return;
@@ -106,7 +112,11 @@ export class JdModalPullDownCloseService {
     }
   }
 
-  // document touchmove 전 방향 체크. x 축 이동으로 판단하면 onTouchMove 를 하지 않음
+  /**
+   * document touchmove 전 방향 체크.
+   * x 축 이동으로 판단하면 onTouchMove 를 하지 않음.
+   * @param evt
+   */
   protected onTouchMoveIntercept(evt: TouchEvent) {
     const { startX, startY } = this;
     const { clientX, clientY } = evt.touches[0];
@@ -124,14 +134,20 @@ export class JdModalPullDownCloseService {
     }
   }
 
-  // document touchmove
+  /**
+   * document touchmove
+   * @param evt
+   */
   protected onTouchMove(evt: TouchEvent) {
     const moveY = evt.touches[0].clientY;
     this.moveY = (moveY - this.startY) / this.dragResistance;
     this.updateState();
   }
 
-  // document touchend
+  /**
+   * document touchend
+   * @param evt
+   */
   protected onTouchEnd(evt: TouchEvent) {
     document.removeEventListener('touchmove', this.handleTouchMoveIntercept);
     document.removeEventListener('touchmove', this.handleTouchMove);
@@ -146,20 +162,29 @@ export class JdModalPullDownCloseService {
     }
   }
 
-  // 스크롤 컨테이너(DOM) 의 prevent 처리
+  /**
+   * 스크롤 컨테이너(DOM) 의 prevent 처리
+   * @param evt
+   */
   protected onContainerTouchPrevent(evt: TouchEvent) {
     if (0 < this.moveCheckY && evt.cancelable) {
       evt.preventDefault();
     }
   }
 
-  // 상태 업데이트
+  /**
+   * 상태 업데이트
+   */
   protected updateState() {
     const y = Math.max(0, this.moveY);
     this.modalPanelElement.style.transform = `translate3d(0, ${y}px, 0)`;
   }
 
-  // 드래깅 시작
+  /**
+   * 드래깅 시작
+   * @param startX
+   * @param startY
+   */
   protected startFrame(startX: number, startY: number) {
     this.clearFrame();
     this.startX = startX;
@@ -170,13 +195,17 @@ export class JdModalPullDownCloseService {
     document.addEventListener('touchmove', this.handleTouchMoveIntercept);
   }
 
-  // 드래깅 클리어
+  /**
+   * 드래깅 클리어
+   */
   protected clearFrame() {
     cancelAnimationFrame(this.requestFrame);
     this.moveCheckY = 0;
   }
 
-  // 드래깅 릴리즈
+  /**
+   * 드래깅 릴리즈
+   */
   protected animateFrame() {
     const targetY = 0;
     const momentum = 0.33;
@@ -190,18 +219,28 @@ export class JdModalPullDownCloseService {
     this.updateState();
   }
 
+  /**
+   * 스크롤 컨테이너 지정
+   * @param element
+   */
   setScrollPanelElement(element: HTMLElement) {
     this.scrollPanelElement = element;
   }
 
-  // 강제로 스크롤 컨테이너를 바꿔야 하는 경우가 있을 때 사용.
+  /**
+   * 동작 중 강제로 스크롤 컨테이너를 바꿔야 하는 경우가 있을 때 사용.
+   * 예: 스와이프, 탭 전환 등에 따라 스크롤 컨테이너 자체가 변경되는 경우(내부 컨텐츠 변경이 아님)
+   * @param element
+   */
   changeScrollPanelElement(element: HTMLElement) {
     if (this.scrollPanelElement) this.dispose();
     this.setScrollPanelElement(element);
     this.init();
   }
 
-  // 파기
+  /**
+   * 해제
+   */
   dispose() {
     document.removeEventListener('touchstart', this.handleTouchStart);
     document.removeEventListener('touchmove', this.handleTouchMoveIntercept);
@@ -213,6 +252,9 @@ export class JdModalPullDownCloseService {
     }
   }
 
+  /**
+   * 파기
+   */
   destroy() {
     this.dispose();
     this.listener.unsubscribe();

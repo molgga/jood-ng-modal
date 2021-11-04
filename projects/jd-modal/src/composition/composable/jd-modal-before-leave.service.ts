@@ -6,7 +6,7 @@ import { ModalPopStateEvent } from '../core/types';
 type CastFunction<T> = () => T | Promise<T>;
 
 /**
- * 모달 닫기(뒤로가기)시 핸들링 하기
+ * 모달 닫기(뒤로가기)시 컨펌 핸들링 기능
  */
 @Injectable()
 export class JdModalBeforeLeaveService {
