@@ -1,4 +1,7 @@
-// @TODO - 정리
+/**
+ * TODO - 정리
+ * @public
+ */
 export interface HistoryStrategy {
   touch(currentServiceId: number, current: number): void;
   getStateOfHistory(currentServiceId: number): HistoryStrategyState;

@@ -4,6 +4,10 @@ import { JdModalService } from '../core/jd-modal.service';
 import { JdModalRef } from '../core/jd-modal.ref';
 import { ModalState } from '../core/types';
 
+/**
+ * 모달 프로바이더 서비스
+ * @public
+ */
 @Injectable()
 export class JdModalProviderService {
   constructor(private modalService: JdModalService) {}

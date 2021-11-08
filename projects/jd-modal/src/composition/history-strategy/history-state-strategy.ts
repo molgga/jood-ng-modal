@@ -2,6 +2,7 @@ import { HistoryStrategy } from './types';
 
 /**
  * history state 관리.
+ * @public
  */
 export class HistoryStateStrategy implements HistoryStrategy {
   touch(currentServiceId: number, current: number) {

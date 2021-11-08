@@ -6,7 +6,8 @@ import { ModalPopStateEvent } from '../core/types';
 type CastFunction<T> = () => T | Promise<T>;
 
 /**
- * 모달 닫기(뒤로가기)시 컨펌 핸들링 기능
+ * composables: 모달 닫기(뒤로가기)시 컨펌 기능
+ * @public
  */
 @Injectable()
 export class JdModalBeforeLeaveService {
@@ -14,15 +15,18 @@ export class JdModalBeforeLeaveService {
     this.handleBeforeLeaveIntercept = this.onInterceptBeforeLeave.bind(this);
   }
 
+  /** @internal */
   protected holdBeforeLeave = false;
+  /** @internal */
   protected fnValidate: CastFunction<boolean> = async () => Promise.resolve(true);
+  /** @internal */
   protected fnConfirm: CastFunction<boolean> = async () => Promise.resolve(true);
+  /** @internal */
   protected handleBeforeLeaveIntercept: (evt: ModalPopStateEvent) => void;
 
   /**
    * popstate 이벤트 핸들러
-   * @param evt
-   * @returns
+   * @param evt - 이벤트
    */
   async onInterceptBeforeLeave(evt: ModalPopStateEvent) {
     const { current: modalCurrentId } = this.modalService
@@ -77,7 +81,7 @@ export class JdModalBeforeLeaveService {
   /**
    * validate 콜백.
    * 반환값이 true 인 경우 통과, false 인 경우 confirm 으로 넘어감.
-   * @param fn 콜백
+   * @param fn - 콜백
    */
   onBeforeLeaveValidate(fn: CastFunction<boolean>) {
     this.fnValidate = fn;
@@ -86,7 +90,7 @@ export class JdModalBeforeLeaveService {
   /**
    * confirm 콜백.
    * 반환값이 true 인 경우 닫음(뒤로가기), false 인 경우 닫기 취소.
-   * @param fn 콜백
+   * @param fn - 콜백
    */
   onBeforeLeaveConfirm(fn: CastFunction<boolean>): void {
     this.fnConfirm = fn;

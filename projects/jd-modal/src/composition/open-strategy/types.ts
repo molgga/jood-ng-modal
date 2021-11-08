@@ -1,5 +1,9 @@
 import { Properties as CSSProperties } from 'csstype';
 
+/**
+ * 오픈 전략 스타일 세트
+ * @public
+ */
 export interface OpenStrategyStyleSet {
   modal?: CSSProperties;
   pivot?: CSSProperties;
@@ -7,7 +11,8 @@ export interface OpenStrategyStyleSet {
 }
 
 /**
- * 오픈(레이어) 관련 css style 전략.
+ * 오픈 전략
+ * @public
  */
 export interface OpenStrategy {
   /**

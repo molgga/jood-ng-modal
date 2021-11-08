@@ -2,6 +2,7 @@ import { OpenStrategy } from './types';
 
 /**
  * 중앙에 쌓임.
+ * @public
  */
 export class StackNormal implements OpenStrategy {
   shadow() {

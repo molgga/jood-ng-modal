@@ -3,6 +3,7 @@ import { OpenStrategy } from './types';
 /**
  * 좌에서 우로.
  * 좌측에 쌓임.
+ * @public
  */
 export class StackLeft implements OpenStrategy {
   shadow() {

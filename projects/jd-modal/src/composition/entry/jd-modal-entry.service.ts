@@ -7,6 +7,10 @@ import { OpenStrategyStyleSet } from '../open-strategy';
 
 type HandleLocationPopState = (evt: ModalPopStateEvent) => void;
 
+/**
+ * 모달 엔트리 서비스
+ * @public
+ */
 @Injectable()
 export class JdModalEntryService {
   constructor(private modalService: JdModalService, @Inject(JdModalRefToken) private modalRef: JdModalRef) {

@@ -45,7 +45,7 @@
    *
    * SUPPORTED TOKENS: <projectFolder>, <packageName>, <unscopedPackageName>
    */
-  "mainEntryPointFilePath": "<projectFolder>/dist/jd-modal/jood-ng-modal.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/dist/jd-modal/public-api.d.ts",
 
   /**
    * A list of NPM package names whose exports should be treated as part of this package.
@@ -136,6 +136,7 @@
      * DEFAULT VALUE: "<projectFolder>/etc/"
      */
     // "reportFolder": "<projectFolder>/etc/",
+    "reportFolder": "<projectFolder>/extract-report/",
 
     /**
      * Specifies the folder where the temporary report file is written.  The file name portion is determined by

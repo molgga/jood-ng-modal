@@ -1,6 +1,10 @@
 import { ComponentFactoryResolver, Directive, Injector, Input, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
 
+/**
+ * 엔트리 컴포넌트 주입 처리기
+ * @public
+ */
 @Directive({
   selector: '[jdModalEntryResolver]',
 })
@@ -8,8 +12,10 @@ export class JdModalEntryResolver {
   constructor(private viewContainerRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {}
 
   @Input() modalRef!: JdModalRef;
+
   @Input() modalIndex: number = -1;
 
+  /** @internal */
   ngOnInit() {
     const providers = [{ provide: JdModalRefToken, useValue: this.modalRef }];
     const injector = Injector.create({ providers });
@@ -19,6 +25,7 @@ export class JdModalEntryResolver {
     this.viewContainerRef.createComponent(componentFactory, 0, injector);
   }
 
+  /** @internal */
   ngOnChanges(changes: SimpleChanges) {
     if (changes.modalIndex) {
       this.modalRef.setIndex(changes.modalIndex.currentValue);
