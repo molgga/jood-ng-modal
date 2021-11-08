@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable, Subscription } from 'rxjs';
 import { ModalEvent, ModalEventType, ModalData, ModalConfig, EntryComponentType, ModalState } from './types';
 import { JdModalRef } from './jd-modal.ref';
-import { JdModalEntryComponent } from '../entry/jd-modal-entry.component';
 import { HistoryStrategy, HistoryStateStrategy } from '../history-strategy';
 
 /**
@@ -21,7 +20,7 @@ export class JdModalService {
   protected modalsSubject: Subject<ModalState> = new Subject();
   protected listener: Subscription = new Subscription();
   protected historyStrategy: HistoryStrategy = new HistoryStateStrategy();
-  protected defaultEntryComponent: EntryComponentType = JdModalEntryComponent;
+  protected defaultEntryComponent: EntryComponentType = null;
   protected useHistoryState: boolean = false;
   protected useBlockBodyScroll: boolean = false;
   protected blockBodyStyleBefore: any = null;
@@ -96,20 +95,19 @@ export class JdModalService {
   }
 
   /**
+   * 기본 엔트리 컴포넌트가 지정 되었는지 여부 있는지
+   */
+  hasDefaultEntryComponent(): boolean {
+    return !!this.defaultEntryComponent;
+  }
+
+  /**
    * 모달을 감싸는(모달 기능, 모션 처리) 컴포넌트
    * @param {EntryComponentType} entryComponent
    * @returns {void}
    */
   setDefaultEntryComponent(entryComponent: EntryComponentType): void {
     this.defaultEntryComponent = entryComponent;
-  }
-
-  /**
-   * 모달을 감싸는 컴포넌트 리셋
-   * @returns {void}
-   */
-  resetDefaultEntryComponent(): void {
-    this.defaultEntryComponent = JdModalEntryComponent;
   }
 
   /**

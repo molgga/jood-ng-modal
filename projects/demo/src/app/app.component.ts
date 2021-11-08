@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JdModalService, StackBottom, StackNormal, StackRight } from '@jood/ng-modal';
+import { JdModalEntryComponent, JdModalService, StackBottom, StackRight } from '@jood/ng-modal';
 import { TestBoxComponent } from './composition/test-box/test-box.component';
 import { TestBox2Component } from './composition/test-box2/test-box2.component';
 import { TestBox3Component } from './composition/test-box3/test-box3.component';
@@ -15,6 +15,7 @@ export class AppComponent {
   constructor(private jdModalService: JdModalService) {
     jdModalService.setUseBlockBodyScroll(true);
     jdModalService.setUseHistoryState(true);
+    jdModalService.setDefaultEntryComponent(JdModalEntryComponent);
   }
 
   get myTitle() {
