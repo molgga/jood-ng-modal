@@ -1,6 +1,7 @@
 {
   "name": "jood-ng-modal",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start:demo": "ng serve demo",
@@ -12,7 +13,6 @@
     "extract:doc": "npx api-documenter markdown --input-folder=./extract-report --output-folder=./extract-doc",
     "extract:cycle": "npm run build:jd-modal && npm run extract:report && npm run extract:doc"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
