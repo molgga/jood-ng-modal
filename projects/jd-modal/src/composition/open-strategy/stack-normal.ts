@@ -7,7 +7,10 @@ export class StackNormal implements OpenStrategy {
   shadow() {
     return {
       pivot: {
-        boxShadow: '0 0 8px rgba(0, 0, 0, 0.02), 0 3px 10px 1px rgba(0, 0, 0, 0.04), 0 6px 6px rgba(0, 0, 0, 0.06)',
+        // boxShadow: '0 0 8px rgba(0, 0, 0, 0.02), 0 3px 10px 1px rgba(0, 0, 0, 0.04), 0 6px 6px rgba(0, 0, 0, 0.06)',
+        filter: `drop-shadow(0 0 8px rgba(0, 0, 0, 0.02)) 
+          drop-shadow(0 3px 10px rgba(0, 0, 0, 0.04)) 
+          drop-shadow(0 6px 6px rgba(0, 0, 0, 0.06))`,
       },
     };
   }
