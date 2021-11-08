@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JdModalService, StackBottom } from '@jood/ng-modal';
+import { JdModalService, StackBottom, StackNormal, StackRight } from '@jood/ng-modal';
 import { TestBoxComponent } from './composition/test-box/test-box.component';
 import { TestBox2Component } from './composition/test-box2/test-box2.component';
 import { TestBox3Component } from './composition/test-box3/test-box3.component';
@@ -27,7 +27,6 @@ export class AppComponent {
       overlayClose: true,
       disableShadow: true,
       floatingMode: true,
-      openStrategy: new StackBottom(),
     });
   }
 
@@ -35,9 +34,8 @@ export class AppComponent {
     this.jdModalService.open({
       component: TestBox2Component,
       overlayClose: true,
-      disableShadow: true,
       floatingMode: true,
-      openStrategy: new StackBottom(),
+      openStrategy: new StackRight(),
     });
   }
 
@@ -45,7 +43,6 @@ export class AppComponent {
     this.jdModalService.open({
       component: TestBox3Component,
       overlayClose: true,
-      disableShadow: true,
       floatingMode: true,
       openStrategy: new StackBottom(),
     });

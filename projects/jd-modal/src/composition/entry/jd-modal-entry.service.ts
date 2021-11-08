@@ -22,9 +22,8 @@ export class JdModalEntryService {
     this.computedStyleSet();
   }
 
-  hostElement!: HTMLElement;
-
   listener!: Subscription;
+  hostElement!: HTMLElement;
   animateTimer: any = null;
   modalLength = 0;
   safeTiming = 0;

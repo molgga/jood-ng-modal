@@ -1,5 +1,4 @@
-import { Component, ElementRef, HostBinding, Inject, OnInit, ViewChild } from '@angular/core';
-import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
+import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
 import { JdModalEntryService } from './jd-modal-entry.service';
 
 @Component({
@@ -9,11 +8,7 @@ import { JdModalEntryService } from './jd-modal-entry.service';
   styleUrls: ['./jd-modal-entry.component.scss'],
 })
 export class JdModalEntryComponent {
-  constructor(
-    @Inject(JdModalRefToken) private modalRef: JdModalRef,
-    private entryService: JdModalEntryService,
-    private refModalContainer: ElementRef<HTMLElement>
-  ) {}
+  constructor(private entryService: JdModalEntryService, private refModalContainer: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit() {
     this.entryService.setHostElement(this.refModalContainer.nativeElement);
