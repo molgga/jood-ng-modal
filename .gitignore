@@ -6,6 +6,8 @@ dist
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
+extract-report
+extract-doc
 
 # dependencies
 node_modules

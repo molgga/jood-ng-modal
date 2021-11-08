@@ -7,7 +7,10 @@
     "build:jd-modal": "ng build jd-modal",
     "build:demo": "ng build demo",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "extract:report": "npx api-extractor run --local --verbose",
+    "extract:doc": "npx api-documenter markdown --input-folder=./extract-report --output-folder=./extract-doc",
+    "extract:cycle": "npm run build:jd-modal && npm run extract:report && npm run extract:doc"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +30,8 @@
     "@angular-devkit/build-angular": "~12.2.10",
     "@angular/cli": "~12.2.10",
     "@angular/compiler-cli": "~12.2.0",
+    "@microsoft/api-documenter": "^7.13.67",
+    "@microsoft/api-extractor": "^7.18.19",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "http-server": "^14.0.0",
