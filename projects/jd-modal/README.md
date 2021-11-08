@@ -1,24 +1,101 @@
 # JdModal
 
+@TODO
+
+* app.module.ts
+```typescript
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { JdModalModule } from '@jood/ng-modal';
+import { AppComponent } from './app.component';
+import { TestBoxComponent } from './test-box/test-box.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [CommonModule, BrowserModule, JdModalModule], // 모듈 추가
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+* app.component.ts
+```typescript
+// app.components.ts
+import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { JdModalEntryComponent, JdModalService, StackBottom, StackRight } from '@jood/ng-modal';
+import { TestBoxComponent } from './composition/test-box/test-box.component';
+import { TestBox2Component } from './composition/test-box2/test-box2.component';
+import { TestBox3Component } from './composition/test-box3/test-box3.component';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  title = 'demo';
+  listener: Subscription | null;
+
+  constructor(private jdModalService: JdModalService) { // 서비스 초기 구성
+    jdModalService.setUseBlockBodyScroll(true);
+    jdModalService.setUseHistoryState(true);
+    jdModalService.setDefaultEntryComponent(JdModalEntryComponent);
+  }
+
+  onClick() {
+    if (this.listener) {
+      this.listener.unsubscribe();
+      this.listener = null;
+    }
+    const modalRef = this.jdModalService.open({ // 모달 열기
+      component: TestBoxComponent,
+      overlayClose: true,
+      disableShadow: true,
+      floatingMode: true,
+    });
+    this.listener = modalRef.observeClosed().subscribe(result => {
+      console.log(result); // TestBoxComponent close result
+    });
+  }
+  ngOnInit() {}
+}
+```
+
+* app.component.html
+```html
+<button (click)="onClick()">onClick</button>
+
+<jd-modal-provider></jd-modal-provider> <!-- 프로바이더 -->
+```
+
+* test-box.component.ts
+```typescript
+// test-box.component.ts
+import { Component, Inject, OnInit } from '@angular/core';
+import { JdModalRefToken, JdModalRef } from '@jood/ng-modal';
+
+@Component({
+  providers: [],
+  selector: 'test-box',
+  templateUrl: './test-box.component.html',
+  styleUrls: ['./test-box.component.scss'],
+})
+export class TestBoxComponent implements OnInit {
+  constructor(@Inject(JdModalRefToken) public modalRef: JdModalRef) {}
+
+  ngOnInit() {}
+
+  onClose() {
+    this.modalRef.close({ hello: 'result' });
+  }
+}
+
+```
+
+***
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
-
-## Code scaffolding
-
-Run `ng generate component component-name --project jd-modal` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project jd-modal`.
-> Note: Don't forget to add `--project jd-modal` or else it will be added to the default project in your `angular.json` file. 
-
-## Build
-
-Run `ng build jd-modal` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build jd-modal`, go to the dist folder `cd dist/jd-modal` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test jd-modal` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

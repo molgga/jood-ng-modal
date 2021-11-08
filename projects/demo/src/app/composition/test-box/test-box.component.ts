@@ -15,6 +15,4 @@ export class TestBoxComponent implements OnInit {
   onClose() {
     this.modalRef.close();
   }
-
-  ngOnDestroy() {}
 }
