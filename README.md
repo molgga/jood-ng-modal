@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { JdModalModule } from '@jood/ng-modal';
 import { AppComponent } from './app.component';
-import { TestBoxComponent } from './test-box/test-box.component';
 
 @NgModule({
   declarations: [AppComponent],
