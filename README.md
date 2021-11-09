@@ -1,27 +1,99 @@
-# JoodNgModal
+# @jood/ng-modal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+@TODO
 
-## Development server
+* app.module.ts
+```typescript
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { JdModalModule } from '@jood/ng-modal';
+import { AppComponent } from './app.component';
+import { TestBoxComponent } from './test-box/test-box.component';
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+@NgModule({
+  declarations: [AppComponent],
+  imports: [CommonModule, BrowserModule, JdModalModule], // 모듈 추가
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-## Code scaffolding
+* app.component.ts
+```typescript
+// app.components.ts
+import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { JdModalEntryComponent, JdModalService, StackBottom, StackRight } from '@jood/ng-modal';
+import { TestBoxComponent } from './composition/test-box/test-box.component';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  title = 'demo';
+  listener: Subscription | null;
 
-## Build
+  constructor(private jdModalService: JdModalService) { // 서비스 초기 구성
+    jdModalService.setUseBlockBodyScroll(true);
+    jdModalService.setUseHistoryState(true);
+    jdModalService.setDefaultEntryComponent(JdModalEntryComponent);
+  }
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  onClick() {
+    if (this.listener) {
+      this.listener.unsubscribe();
+      this.listener = null;
+    }
+    const modalRef = this.jdModalService.open({ // 모달 열기
+      component: TestBoxComponent,
+      overlayClose: true,
+      disableShadow: true,
+      floatingMode: true,
+    });
+    this.listener = modalRef.observeClosed().subscribe(result => {
+      console.log(result); // TestBoxComponent close result
+    });
+  }
+  ngOnInit() {}
+}
+```
 
-## Running unit tests
+* app.component.html
+```html
+<button (click)="onClick()">onClick</button>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<jd-modal-provider></jd-modal-provider> <!-- 프로바이더 -->
+```
 
-## Running end-to-end tests
+* test-box.component.ts
+```typescript
+// test-box.component.ts
+import { Component, Inject, OnInit } from '@angular/core';
+import { JdModalRefToken, JdModalRef } from '@jood/ng-modal';
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+@Component({
+  providers: [],
+  selector: 'test-box',
+  templateUrl: './test-box.component.html',
+  styleUrls: ['./test-box.component.scss'],
+})
+export class TestBoxComponent implements OnInit {
+  constructor(@Inject(JdModalRefToken) public modalRef: JdModalRef) {}
 
-## Further help
+  ngOnInit() {}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  onClose() {
+    this.modalRef.close({ hello: 'result' });
+  }
+}
+
+```
+
+***
+
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
