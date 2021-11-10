@@ -10,7 +10,7 @@ import { TestBox3Component } from './composition/test-box3/test-box3.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'demo';
+  title = '@jood/ng-modal';
 
   constructor(private jdModalService: JdModalService) {
     jdModalService.setUseBlockBodyScroll(true);
