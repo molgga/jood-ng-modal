@@ -9,8 +9,8 @@ on:
 
 jobs:
 
-  # 사전 작업 및 확인
-  release-ready:
+  # 릴리즈 npm
+  release-npm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2 # 소스 가져오기
@@ -26,41 +26,19 @@ jobs:
       # 테스트
       - name: Test
         run: npm run ci:test
-        
-      # 모듈 캐싱하기 - 분리된 jobs(workflows) 에서 사용 유지 
-      # https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#caching-dependencies
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-
-  # 퍼블리싱 npm
-  publish-npm:
-    needs: release-ready
-    runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
-    steps:
-      - uses: actions/checkout@v2 # 소스 가져오기
-      - uses: actions/setup-node@v1 # 노드 설정하기
-        with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
-
+      
+      # 빌드
       - name: Build
         run: npm run ci:build
 
+      # 퍼블리시 npm
       - name: NPM publish
         run: npm publish ./dist/jd-modal
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
 
-  # 퍼블리싱 gh-pages
-  publish-doc:
+  # 릴리즈 doc
+  release-doc:
     needs: release-ready
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/doc')
@@ -70,13 +48,18 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+          
+      # 모듈 설치
+      - name: Install dependencies
+        run: npm ci # yarn 사용시 yarn install --frozen-lockfile
 
-      - name: Doc Clear
-        run: npm run page:clear
+      # doc dist
+      - name: Doc Generate
+        run: |
+          npm run page:clear
+          npm run page:expose
 
-      - name: Doc Build & Generate
-        run: npm run page:expose
-
+      # gh-pages
       - name: Github pages publish
         uses: peaceiris/actions-gh-pages@v3
         with:
