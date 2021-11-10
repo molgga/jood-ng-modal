@@ -63,7 +63,8 @@
           },
           "configurations": {
             "production": {
-              "deployUrl": "/jood-ng-modal/",
+              "deployUrl": "https://molgga.github.io/jood-ng-modal/",
+              "baseHref": "/jood-ng-modal/",
               "budgets": [
                 {
                   "type": "initial",
