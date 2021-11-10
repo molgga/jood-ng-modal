@@ -1,6 +1,6 @@
 # @jood/ng-modal
 
-@TODO
+@TODO.
 
 * app.module.ts
 ```typescript
