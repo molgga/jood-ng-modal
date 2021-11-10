@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": ">=12",
-    "@angular/core": ">=12",
-    "csstype": ">=2"
+    "@angular/core": ">=12"
   },
   "dependencies": {
+    "csstype": ">=2",
     "tslib": "^2.3.0"
   },
   "main": "bundles/jood-ng-modal.umd.js",
