@@ -12,6 +12,7 @@ jobs:
   # 릴리즈 npm
   release-npm:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v2 # 소스 가져오기
       - uses: actions/setup-node@v1 # 노드 설정하기
