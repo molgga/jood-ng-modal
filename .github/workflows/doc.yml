@@ -1,4 +1,4 @@
-name: Release deploy
+name: Doc deploy
 
 on:
   release:
