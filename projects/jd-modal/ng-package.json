@@ -3,5 +3,6 @@
   "dest": "../../dist/jd-modal",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["csstype"]
 }
