@@ -17,12 +17,11 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm install # yarn 사용시 yarn install --frozen-lockfile
+        run: npm ci # yarn 사용시 yarn install --frozen-lockfile
 
       - name: Build & Test
         run: |
-          npm run ci:build
-          npm run ci:test
+          npm run ci:deploy-before
 
       # - uses: codecov/codecov-action@v1
       #   with:
