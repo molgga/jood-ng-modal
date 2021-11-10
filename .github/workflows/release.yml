@@ -20,16 +20,16 @@ jobs:
       - name: Install dependencies
         run: npm ci # yarn 사용시 yarn install --frozen-lockfile
 
-      - name: Build and Test
-        run: |
-          npm run ci:test
-          npm run ci:deploy-before
+      - name: Test
+        run: npm run ci:test
 
   publish-npm:
     needs: release-ready
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
+      - name: Build
+        run: npm run ci:build
       - name: NPM publish
         run: npm publish ./dist/jd-modal
         env:
@@ -40,6 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/doc')
     steps:
+      - name: Doc generate
+        run: |
+          npm run page:clear
+          npm run page:expose
       - name: Github pages publish
         uses: peaceiris/actions-gh-pages@v3
         with:
