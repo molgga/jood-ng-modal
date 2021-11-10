@@ -63,7 +63,7 @@
           },
           "configurations": {
             "production": {
-              "deployUrl": "/jood-v-modal",
+              "deployUrl": "/jood-v-modal/",
               "budgets": [
                 {
                   "type": "initial",
