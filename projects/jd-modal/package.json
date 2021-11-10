@@ -2,13 +2,40 @@
   "name": "@jood/ng-modal",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0"
+    "@angular/common": ">=12",
+    "@angular/core": ">=12"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "devDependencies": {
     "csstype": "^3.0.9"
-  }
+  },
+  "main": "bundles/jood-ng-modal.umd.js",
+  "module": "fesm2015/jood-ng-modal.js",
+  "es2015": "fesm2015/jood-ng-modal.js",
+  "esm2015": "esm2015/jood-ng-modal.js",
+  "fesm2015": "fesm2015/jood-ng-modal.js",
+  "typings": "jood-ng-modal.d.ts",
+  "sideEffects": false,
+  "homepage": "https://github.com/molgga/jood-ng-modal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/molgga/jood-ng-modal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/molgga/jood-ng-modal/issues",
+    "email": "molgga84@gmail.com"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "keywords": [
+    "typescript",
+    "angular",
+    "modal",
+    "dialog",
+    "actionsheet"
+  ]
 }
