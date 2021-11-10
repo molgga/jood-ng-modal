@@ -6,10 +6,8 @@
     "@angular/core": ">=12"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "csstype": "^3.0.9"
+    "tslib": "^2.3.0",
+    "csstype": ">=2"
   },
   "main": "bundles/jood-ng-modal.umd.js",
   "module": "fesm2015/jood-ng-modal.js",
