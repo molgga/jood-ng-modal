@@ -17,7 +17,7 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        run: npm ci # yarn 사용시 yarn install --frozen-lockfile
+        run: npm install # yarn 사용시 yarn install --frozen-lockfile
 
       - name: Build & Test
         run: |
