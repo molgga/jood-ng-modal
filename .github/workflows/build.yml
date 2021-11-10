@@ -21,14 +21,9 @@ jobs:
 
       - name: Build & Test
         run: |
+          npm run ci:test
           npm run ci:deploy-before
 
       # - uses: codecov/codecov-action@v1
       #   with:
       #     directory: ./coverage
-
-      - name: Github pages publish
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-runners-access-token-github_token
-          publish_dir: "./docs"
