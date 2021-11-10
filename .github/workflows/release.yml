@@ -39,7 +39,6 @@ jobs:
 
   # 릴리즈 doc
   release-doc:
-    needs: release-ready
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/doc')
     steps:
