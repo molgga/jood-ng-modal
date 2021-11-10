@@ -21,8 +21,8 @@ jobs:
 
       - name: Build & Test
         run: |
+          npm run ci:build
           npm run ci:test
-          npm run ci:deploy-before
 
       # - uses: codecov/codecov-action@v1
       #   with:
