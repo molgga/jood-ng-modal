@@ -10,9 +10,9 @@ export class StackTop implements OpenStrategy {
     return {
       pivot: {
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.02), 0 10px 10px 1px rgba(0, 0, 0, 0.04), 0 3px 3px rgba(0, 0, 0, 0.06)',
-        filter: `drop-shadow(0 0 5px rgba(0, 0, 0, 0.02)) 
-          drop-shadow(0 10px 10px rgba(0, 0, 0, 0.04)) 
-          drop-shadow(0 3px 3px rgba(0, 0, 0, 0.06))`,
+        // filter: `drop-shadow(0 0 5px rgba(0, 0, 0, 0.02))
+        //   drop-shadow(0 10px 10px rgba(0, 0, 0, 0.04))
+        //   drop-shadow(0 3px 3px rgba(0, 0, 0, 0.06))`,
       },
     };
   }

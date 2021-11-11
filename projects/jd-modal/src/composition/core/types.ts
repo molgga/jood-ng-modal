@@ -8,14 +8,6 @@ import { OpenStrategy } from '../open-strategy/types';
 export type EntryComponentType = any;
 
 /**
- * 모달 서비스 config
- * @public
- */
-export interface ModalConfig {
-  defaultEntryComponent?: EntryComponentType;
-}
-
-/**
  * 모달 서비스 상태
  * @public
  */
@@ -34,7 +26,7 @@ export interface ModalPopStateEvent extends PopStateEvent {
   /**
    * popstate ...
    */
-  _preventModalClose?: boolean;
+  preventModalClose?: boolean;
 }
 
 /**

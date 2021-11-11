@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, Subscription } from 'rxjs';
-import { ModalEvent, ModalEventType, ModalData, ModalConfig, EntryComponentType, ModalState } from './types';
+import { ModalEvent, ModalEventType, ModalData, EntryComponentType, ModalState } from './types';
 import { JdModalRef } from './jd-modal.ref';
 import { HistoryStrategy, HistoryStateStrategy } from '../history-strategy';
 
@@ -15,13 +15,13 @@ export class JdModalService {
   /** internal */
   protected modalUid = 0;
   /** internal */
-  protected modalRefMap: Map<number, JdModalRef> = new Map();
+  protected modalRefMap!: Map<number, JdModalRef>;
   /** internal */
-  protected modalsSubject: Subject<ModalState> = new Subject();
+  protected modalsSubject!: Subject<ModalState>;
   /** internal */
-  protected listener: Subscription = new Subscription();
+  protected modalsListener!: Subscription;
   /** internal */
-  protected historyStrategy: HistoryStrategy = new HistoryStateStrategy();
+  protected historyStrategy!: HistoryStrategy;
   /** internal */
   protected defaultEntryComponent: EntryComponentType = null;
   /** internal */
@@ -29,19 +29,19 @@ export class JdModalService {
   /** internal */
   protected useBlockBodyScroll: boolean = false;
   /** internal */
-  protected blockBodyStyleBefore: any = null;
+  protected blockBodyStyleBeforeOverflow: string | null = null; // blockBodyScroll 을 사용할 때 state 변경 전 body style
 
   /**
    * 초기화
-   * @param config - 설정값
    */
-  init(config?: ModalConfig) {
-    if (config && config.defaultEntryComponent) {
-      this.setDefaultEntryComponent(config.defaultEntryComponent);
-    }
-    const observeState = this.observeModalState().subscribe(this.onChangeModalState.bind(this));
-    this.listener.add(observeState);
+  init() {
+    if (this.serviceId) return;
     this.serviceId = Date.now();
+    this.modalRefMap = new Map();
+    this.modalsSubject = new Subject();
+    this.modalsListener = new Subscription();
+    this.historyStrategy = new HistoryStateStrategy();
+    this.modalsListener.add(this.observeModalState().subscribe(this.onChangeModalState.bind(this)));
   }
 
   /**
@@ -80,7 +80,7 @@ export class JdModalService {
   }
 
   /**
-   * 로케이션 hash 사용 여부 지정
+   * history state 사용 여부 지정
    * @param is - 여부
    */
   setUseHistoryState(is: boolean): void {
@@ -142,6 +142,13 @@ export class JdModalService {
   }
 
   /**
+   * blockBodyScroll 을 사용할 때 state 변경 전 body style 반환
+   */
+  getBlockBodyStyleBeforeOverflow() {
+    return this.blockBodyStyleBeforeOverflow;
+  }
+
+  /**
    * 핸들러: 모달 상태 변경
    * @internal
    */
@@ -156,18 +163,18 @@ export class JdModalService {
    * @internal
    */
   protected touchBlockBodyScroll() {
-    console.log('touchBlockBodyScroll');
-    if (this.blockBodyStyleBefore === null) {
-      this.blockBodyStyleBefore = document.body.style.overflow || '';
+    if (this.blockBodyStyleBeforeOverflow === null) {
+      this.blockBodyStyleBeforeOverflow = document.body.style.overflow || '';
     }
     if (this.modals.length) {
       document.body.style.overflow = 'hidden';
     } else {
-      if (this.blockBodyStyleBefore) {
-        document.body.style.overflow = this.blockBodyStyleBefore;
+      if (this.blockBodyStyleBeforeOverflow) {
+        document.body.style.overflow = this.blockBodyStyleBeforeOverflow;
       } else {
         document.body.style.removeProperty('overflow');
       }
+      this.blockBodyStyleBeforeOverflow = '';
     }
   }
 
@@ -184,9 +191,10 @@ export class JdModalService {
    * @param id - modalRef 의 id
    */
   hasModalRefNext(id: number): boolean {
-    let is = false;
     const mapList = Array.from(this.modalRefMap.keys());
+    if (!mapList.includes(id)) return false;
     const len = mapList.length;
+    let is = false;
     for (let i = 0; i < len; i++) {
       const compareId = mapList[i];
       if (id < compareId) {
@@ -223,12 +231,12 @@ export class JdModalService {
     const subscription = modalRef.observeOpener().subscribe((evt: ModalEvent) => {
       if (evt.type === ModalEventType.CLOSED) {
         subscription.unsubscribe();
-        this.listener.remove(subscription);
+        this.modalsListener.remove(subscription);
         this.modalRefMap.delete(evt.modalRef.id);
         this.dispatchChangeState();
       }
     });
-    this.listener.add(subscription);
+    this.modalsListener.add(subscription);
     this.modalRefMap.set(id, modalRef);
     this.dispatchChangeState();
     return modalRef;
@@ -239,24 +247,9 @@ export class JdModalService {
    * @param id - open 시 전달되는 modalRef 의 id 값
    */
   close(id: number): void {
-    const modalRef = this.getModalRef(id);
-    if (modalRef) {
-      modalRef.close();
-    }
-    this.dispatchChangeState();
+    this.closeById(id);
   }
 
-  /**
-   * 모달 닫기. (modalRef 로)
-   * @param modalRef - 오픈시 전달되거나 inject 해서 꺼낼 수 있는 modalRef
-   */
-  closeByRef(modalRef: JdModalRef): void {
-    const ref = this.getModalRef(modalRef.id);
-    if (ref) {
-      ref.close();
-      this.dispatchChangeState();
-    }
-  }
   /**
    * 모달 닫기. (modalId 로)
    * @param modalRef - 오픈시 전달되거나 inject 해서 꺼낼 수 있는 modalRef 의 id 값
@@ -267,6 +260,32 @@ export class JdModalService {
       ref.close();
       this.dispatchChangeState();
     }
+  }
+
+  /**
+   * 모달 닫기. (modalRef 로)
+   * @param modalRef - 오픈시 전달되거나 inject 해서 꺼낼 수 있는 modalRef
+   */
+  closeByRef(modalRef: JdModalRef): void {
+    const ref = this.getModalRef(modalRef.id);
+    if (!ref) return;
+    ref.close();
+    this.dispatchChangeState();
+  }
+
+  /**
+   * 해당 서비스를 통해 열린 모달을 모두 닫기
+   * @param useClosing - 애니메이트 처리 여부
+   */
+  closeAll(useClosing: boolean = true): void {
+    this.modals.forEach((modalRef) => {
+      if (useClosing) {
+        modalRef.close();
+      } else {
+        modalRef.closed();
+      }
+    });
+    this.dispatchChangeState();
   }
 
   /**
@@ -292,7 +311,7 @@ export class JdModalService {
    */
   swapOrderTopByRef(modalRef: JdModalRef): void {
     let from = -1;
-    const to = this.modalRefMap.size;
+    const to = Math.max(0, this.modalRefMap.size - 1);
     const modals = this.modals;
     const len = modals.length;
     for (let i = 0; i < len; i++) {
@@ -319,6 +338,7 @@ export class JdModalService {
    * @param modalRef - 이동될 modalRef
    */
   pushOrder(modalRef: JdModalRef): void {
+    if (!modalRef) return;
     const from = this.modalRefMap.get(modalRef.id);
     const entires = Array.from(this.modalRefMap.entries());
     const len = entires.length - 1; // 맨 끝에 있으면 위치 변경 불필요
@@ -350,29 +370,12 @@ export class JdModalService {
   }
 
   /**
-   * 해당 서비스를 통해 열린 모달을 모두 닫기
-   * @param useClosing - 애니메이트 처리 여부
-   */
-  closeAll(useClosing: boolean = true): void {
-    const modals = this.modals || [];
-    modals.forEach((modalRef) => {
-      if (useClosing) {
-        modalRef.close();
-      } else {
-        modalRef.closed();
-      }
-    });
-    this.dispatchChangeState();
-  }
-
-  /**
    * 파기
    */
   destroy(): void {
     try {
-      this.listener.unsubscribe();
-      const modals = this.modals || [];
-      modals.forEach((modalRef) => {
+      this.modalsListener.unsubscribe();
+      this.modals.forEach((modalRef) => {
         modalRef.destroy();
       });
     } catch (err) {

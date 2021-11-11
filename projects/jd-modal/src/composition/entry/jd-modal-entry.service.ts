@@ -162,7 +162,7 @@ export class JdModalEntryService {
   }
 
   onLocationPopState(evt: ModalPopStateEvent) {
-    if (evt._preventModalClose) return;
+    if (evt.preventModalClose) return;
     if (!this.historyTouched) return;
     const isTop = this.modalService.isModalRefTop(this.modalRef.id);
     if (!isTop) return;

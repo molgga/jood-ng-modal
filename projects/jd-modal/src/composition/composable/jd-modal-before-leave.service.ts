@@ -43,7 +43,7 @@ export class JdModalBeforeLeaveService {
         this.detach();
         this.modalRef.close();
       } else {
-        evt._preventModalClose = true;
+        evt.preventModalClose = true;
         this.holdBeforeLeave = true;
         history.forward(); // 브라우저는 이미 뒤로가기가 되어서 다시 forwad 시킴.
         await new Promise((resolve) => {

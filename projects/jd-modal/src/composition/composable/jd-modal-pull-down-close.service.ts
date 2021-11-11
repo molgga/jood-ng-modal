@@ -102,7 +102,7 @@ export class JdModalPullDownCloseService {
     });
     const observeRefOpener = this.modalRef.observeOpener().subscribe((evt) => {
       if (evt.type === ModalEventType.OPENED) {
-        this.modalPanelElement = this.modalRef.panelElement;
+        this.modalPanelElement = this.modalRef.panelElement as HTMLElement;
         this.modalPanelElement.style.transition = 'transform 0ms';
       }
     });

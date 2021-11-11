@@ -1,4 +1,5 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostBinding, Inject, PLATFORM_ID } from '@angular/core';
 import { JdModalRef } from '../core/jd-modal.ref';
 import { JdModalProviderService } from './jd-modal-provider.service';
 
@@ -12,12 +13,11 @@ import { JdModalProviderService } from './jd-modal-provider.service';
   templateUrl: './jd-modal-provider.component.html',
   styleUrls: ['./jd-modal-provider.component.scss'],
 })
-export class JdModalProviderComponent implements OnInit {
-  constructor(private providerService: JdModalProviderService) {}
-
-  /** @internal */
-  ngOnInit() {
-    this.providerService.init();
+export class JdModalProviderComponent {
+  constructor(@Inject(PLATFORM_ID) platformId: Object, private providerService: JdModalProviderService) {
+    if (isPlatformBrowser(platformId)) {
+      this.providerService.init();
+    }
   }
 
   get modalList() {

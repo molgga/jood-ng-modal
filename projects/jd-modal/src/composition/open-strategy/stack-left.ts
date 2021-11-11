@@ -9,8 +9,8 @@ export class StackLeft implements OpenStrategy {
   shadow() {
     return {
       pivot: {
-        // boxShadow: '10px 0 10px 2px rgba(0, 0, 0, 0.04), 3px 0 3px rgba(0, 0, 0, 0.02)',
-        filter: 'drop-shadow(10px 0 10px rgba(0, 0, 0, 0.04)) 3px 0 3px rgba(0, 0, 0, 0.02)',
+        boxShadow: '10px 0 10px 2px rgba(0, 0, 0, 0.04), 3px 0 3px rgba(0, 0, 0, 0.02)',
+        // filter: 'drop-shadow(10px 0 10px rgba(0, 0, 0, 0.04)) 3px 0 3px rgba(0, 0, 0, 0.02)',
       },
     };
   }

@@ -19,11 +19,12 @@ export const JdModalRefToken = new InjectionToken<string>('JdModalRefToken');
 export class JdModalRef<R = any, D = any, C = any> {
   protected modalId: number = -1;
   protected modalIndex: number = 0;
-  protected modalEntryComponent: EntryComponentType;
+  protected modalEntryComponent: EntryComponentType | null = null;
   protected modalData: D | null = null;
   protected modalResult: R | undefined;
   protected modalComponent: C | null = null;
-  protected modalPanelStyle: any;
+  protected modalPanelElement: HTMLElement | null = null;
+  protected modalPanelStyle: any = null;
   protected modalOpenStrategy: OpenStrategy;
   protected modalTransitionDuration = 240;
   protected modalFloatingOpenMode = false;
@@ -33,7 +34,6 @@ export class JdModalRef<R = any, D = any, C = any> {
   protected openerSubject: Subject<ModalEvent> = new Subject();
   protected closedSubject: Subject<R | undefined> = new Subject();
   protected attachedBeforeLeave = false;
-  protected modalPanelElement!: HTMLElement;
 
   constructor() {
     this.modalOpenStrategy = new StackNormal();
@@ -42,35 +42,35 @@ export class JdModalRef<R = any, D = any, C = any> {
   /**
    * 모달의 id
    */
-  get id(): number {
+  get id() {
     return this.modalId;
   }
 
   /**
    * 모달의 index
    */
-  get index(): number {
+  get index() {
     return this.modalIndex;
   }
 
   /**
    * 전달된 데이터
    */
-  get data(): D | null {
+  get data() {
     return this.modalData;
   }
 
   /**
    * 전달된 panelStyle
    */
-  get panelStyle(): any {
+  get panelStyle() {
     return this.modalPanelStyle;
   }
 
   /**
    * 모달로 열리는 컴포넌트
    */
-  get component(): C | null {
+  get component() {
     return this.modalComponent;
   }
 
@@ -84,56 +84,56 @@ export class JdModalRef<R = any, D = any, C = any> {
   /**
    * 모달 오픈 방식
    */
-  get openStrategy(): OpenStrategy {
+  get openStrategy() {
     return this.modalOpenStrategy;
   }
 
   /**
    * 모달 오픈 속도
    */
-  get duration(): number {
+  get duration() {
     return this.modalTransitionDuration;
   }
 
   /**
    * 모달 오버레이 영역 닫기 처리 여부
    */
-  get overlayClose(): boolean {
+  get overlayClose() {
     return this.modalOverlayClose;
   }
 
   /**
    * 모달 중첩 열기시 하위 모달의 UI 처리 여부
    */
-  get floatingMode(): boolean {
+  get floatingMode() {
     return this.modalFloatingOpenMode;
   }
 
   /**
    * 모달 box-shadow 사용 여부
    */
-  get disableShadow(): boolean {
+  get disableShadow() {
     return this.modalDisableShadow;
   }
 
   /**
    * 모달 height 100% 사용 여부
    */
-  get fullHeight(): boolean {
+  get fullHeight() {
     return this.modalFullHeight;
   }
 
   /**
    * 모달의 패널(DOM)
    */
-  get panelElement(): HTMLElement {
+  get panelElement() {
     return this.modalPanelElement;
   }
 
   /**
    * 모달 오픈 상태 알리미
    */
-  get opener(): Subject<ModalEvent> {
+  get opener() {
     return this.openerSubject;
   }
 
@@ -152,7 +152,7 @@ export class JdModalRef<R = any, D = any, C = any> {
     this.setComponent(data.component);
     this.setOpenStrategy(data.openStrategy || new StackNormal());
     this.setOverlayClose(data.overlayClose || false);
-    this.setFloatingModel(data.floatingMode || false);
+    this.setFloatingMode(data.floatingMode || false);
     this.setFullHeight(data.fullHeight || false);
     this.setDisableShadow(!!data.disableShadow);
     this.setDuration(data.duration || 240);
@@ -164,7 +164,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달의 id 지정
    * @param id - 모달의 id
    */
-  setId(id: number): void {
+  setId(id: number) {
     this.modalId = id;
   }
 
@@ -172,7 +172,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달 데이터 지정
    * @param data - 데이터
    */
-  setData(data: D | undefined): void {
+  setData(data: D | undefined) {
     this.modalData = data || null;
   }
 
@@ -180,16 +180,16 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달 panelStyle 지정
    * @param styles - 모달 패널의 스타일
    */
-  setPanelStyle(styles: any): void {
-    this.modalPanelStyle = styles;
+  setPanelStyle(styles: any) {
+    this.modalPanelStyle = styles || null;
   }
 
   /**
    * 모달로 열리는 컴포넌트 지정
    * @param component - 컴포넌트
    */
-  setComponent(component: C): void {
-    this.modalComponent = component;
+  setComponent(component: C) {
+    this.modalComponent = component || null;
   }
 
   /**
@@ -204,7 +204,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 오픈 방식 지정
    * @param openStrategy - 오픈 전략
    */
-  setOpenStrategy(openStrategy: OpenStrategy): void {
+  setOpenStrategy(openStrategy: OpenStrategy) {
     this.modalOpenStrategy = openStrategy;
   }
 
@@ -212,7 +212,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달이 열리거나 닫힐 때 속도 지정
    * @param duration - 속도
    */
-  setDuration(duration: number): void {
+  setDuration(duration: number) {
     this.modalTransitionDuration = duration;
   }
 
@@ -220,7 +220,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달 중첩시 별도 모드(openStrategy 와 연관)
    * @param is - 여부
    */
-  setFloatingModel(is: boolean): void {
+  setFloatingMode(is: boolean) {
     this.modalFloatingOpenMode = !!is;
   }
 
@@ -228,7 +228,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달의 overlay 영역 클릭시 닫힘 여부 지정
    * @param is - 여부
    */
-  setOverlayClose(is: boolean): void {
+  setOverlayClose(is: boolean) {
     this.modalOverlayClose = !!is;
   }
 
@@ -236,7 +236,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달의 shadow 처리 여부(openStrategy 에서 지정된 값을 처리하지만, performace 영향이 큰 관계로 별도로 제외시킬 수 있도록함)
    * @param is - 여부
    */
-  setDisableShadow(is: boolean): void {
+  setDisableShadow(is: boolean) {
     this.modalDisableShadow = !!is;
   }
 
@@ -245,7 +245,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * fullHeight 지정시 감싸는 패널(엔트리 컴포넌트)의 height 를 100% 로 지정
    * @param is - 여부
    */
-  setFullHeight(is: boolean): void {
+  setFullHeight(is: boolean) {
     this.modalFullHeight = is;
   }
 
@@ -283,7 +283,7 @@ export class JdModalRef<R = any, D = any, C = any> {
    * 모달 닫기.
    * @param result - 모달이 닫힐 때 외부(보통은 모달을 열은 곳, observeClosed 를 통해) 전달 할 결과값
    */
-  close(result?: R): void {
+  close(result?: R) {
     this.modalResult = result;
     this.openerSubject.next({
       type: ModalEventType.CLOSE,
@@ -294,7 +294,7 @@ export class JdModalRef<R = any, D = any, C = any> {
   /**
    * 모달이 (애니메이션 등 처리 후) 완전히 닫힘.
    */
-  closed(): void {
+  closed() {
     this.openerSubject.next({
       type: ModalEventType.CLOSED,
       modalRef: this,

@@ -16,6 +16,8 @@ export class AppComponent {
     jdModalService.setUseBlockBodyScroll(true);
     jdModalService.setUseHistoryState(true);
     jdModalService.setDefaultEntryComponent(JdModalEntryComponent);
+    // If platformId Browser only
+    jdModalService.init();
   }
 
   get myTitle() {
