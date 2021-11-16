@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  margin-top: var(--jdmi-partition);
+  &:first-child {
+    margin-top: 0;
+  }
+  ::ng-deep {
+    a {
+      color: rgb(51, 142, 222);
+    }
+    .jdmi-p-ul {
+      display: block;
+      margin-top: var(--jdmi-partition);
+    }
+    .jdmi-p-li {
+      display: list-item;
+      margin: 1rem 0 0 1.8rem;
+      list-style-type: disc;
+    }
+    .jdmi-p-highlight {
+      padding: 0 0.1em;
+      border-radius: 20rem 20rem 2rem 2rem;
+      background: transparent;
+      box-shadow: inset 0 -0.5rem 0.1rem #ffe1fd;
+    }
+  }
+}

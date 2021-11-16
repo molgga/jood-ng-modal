@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  .cc-body {
+    height: 240px;
+    overflow: hidden;
+    ::ng-deep {
+      jdmi-code-view {
+        min-height: 210px;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .cc-foot {
+    position: relative;
+    margin-top: -5px;
+    border-radius: 0 0 5px 5px;
+    border-top: 1px solid #444;
+    background: #333333;
+    z-index: 3;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      margin-bottom: 1px;
+      background: linear-gradient(180deg, rgba(41, 42, 44, 0) 0%, rgba(41, 42, 44, 1) 95%);
+      pointer-events: none;
+    }
+    .action-expand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 44px;
+      color: #fff;
+    }
+  }
+  &.is-expanded {
+    .cc-body {
+      height: auto;
+    }
+    .cc-foot {
+      &:before {
+        display: none;
+      }
+      .action-expand {
+        .icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

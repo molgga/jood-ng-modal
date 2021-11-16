@@ -1,0 +1,13 @@
+// @use '../../../styles/theme.scss' as theme;
+// $primary-color: theme.$jdmi-primary-color;
+
+:host {
+  display: block;
+  margin-top: var(--jdmi-partition);
+  line-height: 1.3;
+  font-size: 2.4rem;
+  font-weight: bold;
+  &:first-child {
+    margin-top: 0;
+  }
+}

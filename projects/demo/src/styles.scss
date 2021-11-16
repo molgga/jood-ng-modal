@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~highlight.js/styles/agate.css";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+html {
+  height: 100%;
+  font-size: 20px;
+}
+body {
+  margin: 0;
+  height: 100%;
+  line-height: 1.65;
+}
+
+// highlightjs
+.hljs {
+  .hljs-ln {
+    font-family: Monaco, Consolas, monospace;
+    td {
+      padding: 0 10px;
+    }
+    td.hljs-ln-numbers {
+      padding-right: 10px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.2);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      vertical-align: top;
+      user-select: none;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+:host {
+  position: relative;
+  display: block;
+  margin-top: var(--jdmi-partition);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  &:first-child {
+    margin-top: 0;
+  }
+}

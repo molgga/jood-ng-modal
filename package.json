@@ -34,6 +34,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "csstype": ">=2",
+    "ngx-highlightjs": "^6.1.0",
+    "raw-loader": "^4.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

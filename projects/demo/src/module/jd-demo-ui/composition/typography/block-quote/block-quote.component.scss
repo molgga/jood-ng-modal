@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  margin-top: var(--jdmi-partition);
+  padding: 15px 20px;
+  border-left: 5px solid var(--jdmi-color-3);
+  border-color: var(--jdmi-color-primary);
+  background: var(--jdmi-color-101);
+  &:first-child {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  margin-top: var(--jdmi-partition);
+  margin-bottom: var(--jdmi-partition-up);
+  line-height: 1.4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  &:first-child {
+    margin-top: 0;
+  }
+}

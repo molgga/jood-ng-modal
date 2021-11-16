@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  margin-top: var(--jdmi-partition);
+  &:first-child {
+    margin-top: 0;
+  }
+  .aside {
+    margin-right: 2px;
+  }
+  .bside {
+    margin-left: 2px;
+  }
+  .panel {
+    flex-basis: 50%;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,76 @@
+:host {
+  display: block;
+  margin-top: var(--jdmi-partition);
+  overflow: hidden;
+  border-radius: 6px;
+  background: #282c34;
+
+  ::ng-deep {
+    .mat-tab-header {
+      background: #292a2c !important;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: #444;
+      }
+    }
+    .mat-tab-label {
+      padding-bottom: 2px;
+      height: 44px !important;
+    }
+    .mat-tab-label-active {
+      opacity: 1;
+      color: #fff !important;
+      background: #18191a;
+    }
+    .mat-ink-bar {
+      background: #ffa500 !important;
+    }
+    jdmi-code-view {
+      margin-top: 0;
+    }
+  }
+}
+
+// atom-one-dark
+// :host {
+//   display: block;
+//   margin-top: var(--jdmi-partition);
+//   overflow: hidden;
+//   border-radius: 6px;
+//   background: #282c34;
+
+//   ::ng-deep {
+//     .mat-tab-header {
+//       background: #282c34 !important;
+//       &:before {
+//         content: "";
+//         position: absolute;
+//         left: 0;
+//         right: 0;
+//         bottom: 0;
+//         height: 1px;
+//         background: #444;
+//       }
+//     }
+//     .mat-tab-label {
+//       padding-bottom: 2px;
+//       height: 36px !important;
+//     }
+//     .mat-tab-label-active {
+//       opacity: 1;
+//       color: #fff !important;
+//       background: #18191a;
+//     }
+//     .mat-ink-bar {
+//       background: #ffa500 !important;
+//     }
+//     jdmi-code-view {
+//       margin-top: 0;
+//     }
+//   }
+// }

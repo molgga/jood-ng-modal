@@ -79,7 +79,9 @@ export class JdModalEntryService {
         this.mergeStyle(styleSet, floatingOpening[floatingIndex]);
       }
     }
-    if (isOpened) this.mergeStyle(styleSet, openStrategy.opened());
+    const isFirstOpened = modalLength === 0;
+    const isLastOpened = modalLength !== 0 && index === Math.max(modalLength - 1);
+    if (isOpened && (isFirstOpened || isLastOpened)) this.mergeStyle(styleSet, openStrategy.opened());
     if (isClosing) this.mergeStyle(styleSet, openStrategy.closing());
     this.styleSet = styleSet;
   }

@@ -1,0 +1,27 @@
+:host {
+  position: relative;
+  display: block;
+  margin-top: var(--jdmi-partition);
+  padding: 30px 42px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  color: var(--jdmi-color-7);
+  &:first-child {
+    margin-top: 0;
+  }
+  .qt {
+    position: absolute;
+    top: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 1;
+    font-size: 60px;
+    &.left {
+      left: 2px;
+    }
+    &.right {
+      right: 2px;
+    }
+  }
+}

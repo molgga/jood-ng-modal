@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  margin-top: var(--jdmi-partition);
+  padding-top: var(--jdmi-partition);
+  padding-bottom: var(--jdmi-partition);
+  .part {
+    position: relative;
+    margin: 0 auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--jdmi-color-14);
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--jdmi-color-14);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -16px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--jdmi-color-14);
+    }
+  }
+
+  &.type-only-pad {
+    margin: 0;
+    padding: 0;
+    height: var(--jdmi-partition);
+    .part {
+      display: none;
+    }
+  }
+}
