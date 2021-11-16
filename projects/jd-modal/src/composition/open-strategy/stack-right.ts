@@ -18,7 +18,7 @@ export class StackRight implements OpenStrategy {
   base(duration?: number) {
     const timingOpacity = (duration || 240) * 0.85;
     return {
-      modal: {
+      entry: {
         justifyContent: 'flex-end',
         alignItems: 'initial',
       },

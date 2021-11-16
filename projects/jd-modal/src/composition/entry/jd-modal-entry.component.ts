@@ -36,7 +36,7 @@ export class JdModalEntryComponent {
 
   @HostBinding('style')
   get hostStyle() {
-    return this.entryService.styleSet.modal;
+    return this.entryService.styleSet.entry;
   }
 
   get styles() {

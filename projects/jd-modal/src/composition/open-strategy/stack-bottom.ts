@@ -20,7 +20,7 @@ export class StackBottom implements OpenStrategy {
   base(duration?: number) {
     const timingOpacity = (duration || 240) * 0.85;
     return {
-      modal: {
+      entry: {
         justifyContent: 'center',
         alignItems: 'flex-end',
       },

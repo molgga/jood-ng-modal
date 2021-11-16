@@ -5,6 +5,7 @@ import { Properties as CSSProperties } from 'csstype';
  * @public
  */
 export interface OpenStrategyStyleSet {
+  entry?: CSSProperties;
   modal?: CSSProperties;
   pivot?: CSSProperties;
   overlay?: CSSProperties;
