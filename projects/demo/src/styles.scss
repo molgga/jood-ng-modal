@@ -1,13 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-
+@charset "utf-8";
+// @import "~highlight.js/styles/atom-one-dark.css";
 @import "~highlight.js/styles/agate.css";
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
 html {
   height: 100%;
   font-size: 20px;
@@ -15,13 +9,165 @@ html {
 body {
   margin: 0;
   height: 100%;
+}
+body,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+input,
+select,
+table,
+textarea {
+  font-family: "AppleSDGothicNeo", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif";
+}
+
+/* Reset */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+menu,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+figure,
+legend,
+textarea,
+p,
+blockquote,
+th,
+td,
+input,
+optgroup,
+select {
+  margin: 0;
+  padding: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+fieldset,
+img {
+  border: 0;
+}
+dl,
+ul,
+ol,
+menu,
+li {
+  list-style: none;
+}
+img,
+input,
+select,
+textarea {
+  vertical-align: middle;
+}
+hr,
+caption,
+legend {
+  display: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th {
+  text-align: left;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+abbr,
+acronym {
+  border: 0;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+strong {
+  font-weight: bold;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  vertical-align: middle;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+/* Scaffolding */
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
   line-height: 1.65;
 }
 
 // highlightjs
 .hljs {
   .hljs-ln {
-    font-family: Monaco, Consolas, monospace;
+    font-family: Monaco, Consolas, "Courier New", monospace;
     td {
       padding: 0 10px;
     }
@@ -33,5 +179,40 @@ body {
       vertical-align: top;
       user-select: none;
     }
+  }
+}
+
+// material-icon
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+@media screen and (max-width: 760px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 16px;
   }
 }

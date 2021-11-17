@@ -1,4 +1,17 @@
 <p>custom-open-strategy works!</p>
 <button (click)="onOpen()">onOpen</button>
 
-<jdmi-code-view [code]="testCode1"></jdmi-code-view>
+<jdmi-section>
+  <jdmi-code-collapse [initExpand]="false">
+    <jdmi-code-box>
+      <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
+        <mat-tab label="ts">
+          <jdmi-code-view [code]="testCode1"></jdmi-code-view>
+        </mat-tab>
+        <mat-tab label="html">
+          <jdmi-code-view [code]="testCode1"></jdmi-code-view>
+        </mat-tab>
+      </mat-tab-group>
+    </jdmi-code-box>
+  </jdmi-code-collapse>
+</jdmi-section>
