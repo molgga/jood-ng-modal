@@ -2,15 +2,14 @@
   display: block;
   margin-top: var(--jdmi-partition);
   overflow: hidden;
-  border-radius: 6px;
-  background: #333333;
   &:first-child {
     margin-top: 0;
   }
   .code-inner {
     padding: 15px 20px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     line-height: 1.6;
+    background: #f9f9f9;
     &.hljs-line-numbers {
       padding: 15px 10px 15px 5px;
     }

@@ -16,6 +16,8 @@
     border-radius: 0 0 5px 5px;
     border-top: 1px solid #444;
     background: #333333;
+    // border-top: 1px solid #ddd;
+    // background: #eee;
     z-index: 3;
     &:before {
       content: "";
@@ -25,7 +27,8 @@
       left: 0;
       right: 0;
       margin-bottom: 1px;
-      background: linear-gradient(180deg, rgba(41, 42, 44, 0) 0%, rgba(41, 42, 44, 1) 95%);
+      // background: linear-gradient(180deg, rgba(41, 42, 44, 0) 0%, rgba(41, 42, 44, 1) 95%);
+      background: linear-gradient(180deg, rgba(249, 249, 249, 0) 0%, rgba(249, 249, 249, 1) 95%);
       pointer-events: none;
     }
     .action-expand {

@@ -13,13 +13,16 @@ export class CustomOpenStrategyComponent implements OnInit {
 
   ngOnInit() {}
 
-  testCode1 = require('!raw-loader!./code/code1.txt').default;
+  codeCustomOpenStrategy = require('!raw-loader!./code/codeCustomOpenStrategy.txt').default;
+  codeDemoComponent = require('!raw-loader!./code/codeDemoComponent.txt').default;
+  codeModalBoxComponent = require('!raw-loader!./code/codeModalBoxComponent.txt').default;
 
   onOpen() {
     this.modalService.open({
       component: ModalBoxComponent,
       openStrategy: new CustomOpenStrategy(),
       duration: 360,
+      overlayClose: true,
       floatingMode: true,
     });
   }

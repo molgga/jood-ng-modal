@@ -41,16 +41,19 @@ export class CustomOpenStrategy implements OpenStrategy {
   floatingOpening(): OpenStrategyStyleSet[] {
     return [
       {
+        // last
         pivot: { transform: 'translateY(-60px) rotateX(-10deg) scale(0.85, 0.85)', opacity: 1 },
-        overlay: { opacity: 0.05 },
+        overlay: { opacity: 0.3, backgroundColor: 'rgba(0,0,255,1)' },
       },
       {
+        // second
         pivot: { transform: 'translateY(-40px) rotateX(-5deg) scale(0.9, 0.9)', opacity: 1 },
-        overlay: { opacity: 0.2 },
+        overlay: { opacity: 0.4, backgroundColor: 'rgba(0,255,0,1)' },
       },
       {
+        // first
         pivot: { transform: 'translateY(50px) rotateX(15deg) scale(1, 1)', opacity: 1 },
-        overlay: { opacity: 0.3 },
+        overlay: { opacity: 0.5, backgroundColor: 'rgba(255,0,0,1)' },
       },
     ];
   }

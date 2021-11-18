@@ -2,16 +2,17 @@
 <button (click)="onOpen()">onOpen</button>
 
 <jdmi-section>
-  <jdmi-code-collapse [initExpand]="false">
-    <jdmi-code-box>
-      <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
-        <mat-tab label="ts">
-          <jdmi-code-view [code]="testCode1"></jdmi-code-view>
-        </mat-tab>
-        <mat-tab label="html">
-          <jdmi-code-view [code]="testCode1"></jdmi-code-view>
-        </mat-tab>
-      </mat-tab-group>
-    </jdmi-code-box>
-  </jdmi-code-collapse>
+  <jdmi-code-box>
+    <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
+      <mat-tab label="DemoComponent.ts">
+        <jdmi-code-view [code]="codeDemoComponent"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="ModalBoxComponent.ts">
+        <jdmi-code-view [code]="codeModalBoxComponent"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="CustomOpenStrategy.ts">
+        <jdmi-code-view [code]="codeCustomOpenStrategy"></jdmi-code-view>
+      </mat-tab>
+    </mat-tab-group>
+  </jdmi-code-box>
 </jdmi-section>
