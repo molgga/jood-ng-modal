@@ -1,0 +1,119 @@
+@use "@angular/material" as mat;
+
+// http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
+
+$palette-primary: (
+  50: #e6f1fb,
+  100: #c0dcf5,
+  200: #97c4ef,
+  300: #6dace9,
+  400: #4d9be4,
+  500: #2e89df,
+  600: #2981db,
+  700: #2376d7,
+  800: #1d6cd2,
+  900: #1259ca,
+  A100: #f9fbff,
+  A200: #c6daff,
+  A400: #93b9ff,
+  A700: #7aa8ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$palette-accent: (
+  50: #f3ebff,
+  100: #e2cdff,
+  200: #ceacff,
+  300: #ba8aff,
+  400: #ac71ff,
+  500: #9d58ff,
+  600: #9550ff,
+  700: #8b47ff,
+  800: #813dff,
+  900: #6f2dff,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #e4d9ff,
+  A700: #d2bfff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$palette-warn: (
+  50: #fbe7e5,
+  100: #f5c3be,
+  200: #ee9b92,
+  300: #e77266,
+  400: #e25446,
+  500: #dd3625,
+  600: #d93021,
+  700: #d4291b,
+  800: #cf2216,
+  900: #c7160d,
+  A100: #fff3f3,
+  A200: #ffc2c0,
+  A400: #ff918d,
+  A700: #ff7874,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$app-mat-primary: mat.define-palette($palette-primary);
+$app-mat-accent: mat.define-palette($palette-accent);
+$app-mat-warn: mat.define-palette($palette-warn);
+
+$app-mat-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-mat-primary,
+      accent: $app-mat-accent,
+      warn: $app-mat-warn,
+    ),
+  )
+);
+@include mat.core();
+@include mat.core-theme($app-mat-theme);
+@include mat.button-color($app-mat-theme);

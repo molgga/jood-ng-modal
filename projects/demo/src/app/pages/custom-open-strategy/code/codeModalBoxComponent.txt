@@ -4,8 +4,30 @@ import { CustomOpenStrategy } from './custom-open-strategy';
 
 @Component({
   selector: 'lib-modal-box',
-  templateUrl: './modal-box.component.html',
-  styleUrls: ['./modal-box.component.scss'],
+  template: `
+    modal-box works!
+    <div class="btn">
+      <button (click)="onOpen()">onOpen</button>
+    </div>
+    <div class="btn">
+      <button (click)="onClose()">onClose</button>
+    </div>
+    `,
+  styles: [`
+    :host {
+      display: block;
+      margin: 0 auto;
+      padding: 20px;
+      width: 92vw;
+      height: 40vh;
+      max-width: 480px;
+      box-sizing: border-box;
+      background: #fff;
+    }
+    .btn {
+      padding: 10px;
+    }
+  `],
 })
 export class ModalBoxComponent implements OnInit {
   constructor(

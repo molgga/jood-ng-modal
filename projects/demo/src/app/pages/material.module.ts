@@ -6,6 +6,6 @@ import { MatTabsModule } from '@angular/material/tabs';
   declarations: [],
   imports: [],
   providers: [],
-  exports: [MatButtonModule, MatTabsModule],
+  exports: [MatButtonModule, MatTabsModule, MatButtonModule],
 })
 export class MaterialModule {}
