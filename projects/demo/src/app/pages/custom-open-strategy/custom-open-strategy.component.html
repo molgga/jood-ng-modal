@@ -1,13 +1,38 @@
-<p>custom-open-strategy works!</p>
-
 <jdmi-section>
-  <button mat-flat-button color="primary" (click)="onOpen()">onOpen</button>
-  <button mat-flat-button color="accent" (click)="onOpen()">onOpen</button>
-  <button mat-flat-button color="warn" (click)="onOpen()">onOpen</button>
-  <button mat-flat-button color="foo" (click)="onOpen()">onOpen</button>
+  <jdmi-h2>OpenStrategy</jdmi-h2>
+  <jdmi-p>
+    OpenStrategy 는 모달이 열리고 닫을 때의 애니메이션(css style) 을 정의합니다.
+    <br />interface OpenStrategy 을 구현하면 모달이 열리거나, 닫힐 때의 애니메이션을 없애거나 재정의 할 수 있습니다.
+    <br />일반적으로 사용되는 모달 애니메이션은 몇가지 이미 구현되어 있습니다.
+    <ul class="jdmi-p-ul">
+      <li class="jdmi-p-li"><strong>StackNormal:</strong> 중앙에서 열리고 닫힘.</li>
+      <li class="jdmi-p-li"><strong>StackLeft:</strong> 좌측에서 우측으로 열리고 닫힘.</li>
+      <li class="jdmi-p-li"><strong>StackRight:</strong> 우측에서 좌측으로 열리고 닫힘.</li>
+      <li class="jdmi-p-li"><strong>StackTop:</strong> 위에서 아래로 열리고 닫힘.</li>
+      <li class="jdmi-p-li"><strong>StackBottom:</strong> 아래에서 위로 열리고 닫힘.</li>
+    </ul>
+  </jdmi-p>
+  <!-- prettier-ignore -->
+  <jdmi-code-view code="const a = 1;
+const b = 'foo';">
+  </jdmi-code-view>
 </jdmi-section>
 
 <jdmi-section>
+  <jdmi-h3>CustomOpenStrategy</jdmi-h3>
+  <jdmi-p>
+    <ul class="jdmi-p-ul">
+      <li class="jdmi-p-li">1</li>
+      <li class="jdmi-p-li">2</li>
+      <li class="jdmi-p-li">3</li>
+      <li class="jdmi-p-li">4</li>
+      <li class="jdmi-p-li">5</li>
+    </ul>
+  </jdmi-p>
+</jdmi-section>
+
+<jdmi-section>
+  <button mat-flat-button color="primary" (click)="onOpen()">onOpen</button>
   <jdmi-code-box>
     <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
       <mat-tab label="DemoComponent.ts">
