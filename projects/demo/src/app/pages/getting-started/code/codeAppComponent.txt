@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { JdModalEntryComponent, JdModalService, StackBottom } from '@jood/ng-modal';
+import { SampleModalComponent } from './sample-modal.component';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <button (click)="onModalOpen()">Open</button>
+    <router-outlet></router-outlet>
+    <jd-modal-provider></jd-modal-provider>
+  `,
+  styles: [''],
+})
+export class AppComponent {
+  constructor(private modalService: JdModalService) {
+    modalService.setUseBlockBodyScroll(true);
+    modalService.setUseHistoryState(true);
+    modalService.setDefaultEntryComponent(JdModalEntryComponent);
+    modalService.init();
+  }
+
+  onModalOpen() {
+    this.modalService.open({
+      component: SampleModalComponent,
+      openStrategy: new StackBottom(),
+      overlayClose: true
+    });
+  }
+}

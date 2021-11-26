@@ -9,11 +9,11 @@ import { JdModalEntryComponent, JdModalService, StackBottom, StackRight } from '
 export class AppComponent {
   title = '@jood/ng-modal';
 
-  constructor(private jdModalService: JdModalService) {
-    jdModalService.setUseBlockBodyScroll(true);
-    jdModalService.setUseHistoryState(true);
-    jdModalService.setDefaultEntryComponent(JdModalEntryComponent);
-    jdModalService.init();
+  constructor(private modalService: JdModalService) {
+    this.modalService.setUseBlockBodyScroll(true);
+    this.modalService.setUseHistoryState(true);
+    this.modalService.setDefaultEntryComponent(JdModalEntryComponent);
+    this.modalService.init();
   }
 
   get myTitle() {

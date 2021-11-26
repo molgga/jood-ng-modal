@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { JdModalService } from '@jood/ng-modal';
+import { JdModalService, OpenStrategy } from '@jood/ng-modal';
 import { CustomOpenStrategy } from './custom-open-strategy';
-import { ModalBoxComponent } from './modal-box.component';
+import { getSampleStrategy } from './getSampleStrategy';
+import { ModalBoxComponent } from './modal-box/modal-box.component';
+import { SampleStrategyComponent } from './sample-strategy/sample-strategy.component';
 
 @Component({
   selector: 'lib-custom-open-strategy',
@@ -24,6 +26,17 @@ export class CustomOpenStrategyComponent implements OnInit {
       duration: 360,
       overlayClose: true,
       floatingMode: true,
+    });
+  }
+
+  onOpenSampleStrategy(sampleStrategy: string) {
+    const sampleOptions = getSampleStrategy(sampleStrategy);
+    this.modalService.open({
+      component: SampleStrategyComponent,
+      overlayClose: true,
+      floatingMode: true,
+      data: { sampleStrategy },
+      ...sampleOptions,
     });
   }
 }

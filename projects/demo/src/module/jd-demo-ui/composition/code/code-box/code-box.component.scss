@@ -5,6 +5,11 @@
   border-radius: 6px;
 
   ::ng-deep {
+    jdmi-code-view {
+      .code-inner {
+        border-radius: 0 !important;
+      }
+    }
     .mat-tab-header {
       background: #292a2c !important;
       &:before {

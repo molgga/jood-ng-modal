@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { JdModalRef, JdModalRefToken, JdModalService } from '@jood/ng-modal';
-import { CustomOpenStrategy } from './custom-open-strategy';
+import { CustomOpenStrategy } from '../custom-open-strategy';
 
 @Component({
   selector: 'lib-modal-box',

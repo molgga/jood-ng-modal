@@ -8,5 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class GettingStartedComponent implements OnInit {
   constructor() {}
 
+  codeAppModule = require('!raw-loader!./code/codeAppModule.txt').default;
+  codeAppComponent = require('!raw-loader!./code/codeAppComponent.txt').default;
+  codeSampleModal = require('!raw-loader!./code/codeSampleModal.txt').default;
+
   ngOnInit() {}
 }

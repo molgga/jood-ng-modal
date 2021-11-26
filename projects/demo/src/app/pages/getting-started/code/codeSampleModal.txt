@@ -1,0 +1,26 @@
+import { Component, Inject } from '@angular/core';
+import { JdModalRefToken, JdModalRef } from '@jood/ng-modal';
+
+@Component({
+  selector: 'lib-modal-box',
+  template: `<button (click)="onClose()">onClose</button>`,
+  styles: [`
+    :host {
+      display: block;
+      margin: 0 auto;
+      padding: 20px;
+      width: 92vw;
+      height: 40vh;
+      max-width: 480px;
+      box-sizing: border-box;
+      background: #fff;
+    }
+  `],
+})
+export class SampleModalComponent {
+  constructor(@Inject(JdModalRefToken) private modalRef: JdModalRef) {}
+
+  onClose() {
+    this.modalRef.close();
+  }
+}

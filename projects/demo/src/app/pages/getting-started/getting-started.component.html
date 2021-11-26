@@ -1,3 +1,24 @@
-<p>getting-started works!</p>
+<jdmi-section>
+  <jdmi-h2>Installation</jdmi-h2>
+  <!-- prettier-ignore -->
+  <jdmi-code-view code="$ npm install @jood/ng-modal"></jdmi-code-view>
+</jdmi-section>
 
-<jdmi-code-view></jdmi-code-view>
+<jdmi-section>
+  <jdmi-h3>Quick start</jdmi-h3>
+  <jdmi-p> </jdmi-p>
+
+  <jdmi-code-box>
+    <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
+      <mat-tab label="app.module.ts">
+        <jdmi-code-view [code]="codeAppModule"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="app.component.ts">
+        <jdmi-code-view [code]="codeAppComponent"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="sample-modal.component.ts">
+        <jdmi-code-view [code]="codeSampleModal"></jdmi-code-view>
+      </mat-tab>
+    </mat-tab-group>
+  </jdmi-code-box>
+</jdmi-section>
