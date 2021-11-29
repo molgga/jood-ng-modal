@@ -17,11 +17,17 @@
       margin: 0.6rem 0 0 1.8rem;
       list-style-type: disc;
     }
+    .jdmi-p-em {
+      padding: 3px 4px;
+      border-radius: 4px;
+      color: #a128a5;
+      background: rgba(0, 0, 0, 0.05);
+    }
     .jdmi-p-highlight {
       padding: 0 0.1em;
       border-radius: 20rem 20rem 2rem 2rem;
       background: transparent;
-      box-shadow: inset 0 -0.5rem 0.1rem #ffe1fd;
+      box-shadow: inset 0 -0.5rem 0.1rem #ffe3fe;
     }
   }
 }

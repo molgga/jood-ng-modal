@@ -5,11 +5,15 @@
 @import "~highlight.js/styles/agate.css";
 
 html {
+  margin: 0;
+  padding: 0;
   height: 100%;
   font-size: 16px;
+  line-height: 1.65;
 }
 body {
   margin: 0;
+  padding: 0;
   height: 100%;
 }
 body,
@@ -156,16 +160,6 @@ a:hover {
   text-decoration: none;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-body {
-  line-height: 1.65;
-}
-
 // highlightjs
 .hljs {
   // font-family: Monaco, Consolas, "Courier New", monospace;
@@ -210,12 +204,12 @@ body {
 
 @media screen and (max-width: 760px) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  html {
-    font-size: 16px;
-  }
+  // html {
+  // font-size: 14px;
+  // }
 }
