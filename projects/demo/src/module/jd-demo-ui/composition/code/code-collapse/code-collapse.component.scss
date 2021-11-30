@@ -5,8 +5,10 @@
     overflow: hidden;
     ::ng-deep {
       jdmi-code-view {
-        min-height: 210px;
         box-sizing: border-box;
+        .code-inner {
+          min-height: 210px;
+        }
       }
     }
   }

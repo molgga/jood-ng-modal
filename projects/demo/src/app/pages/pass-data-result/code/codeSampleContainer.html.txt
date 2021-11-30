@@ -1,0 +1,6 @@
+<div>
+  <input [(ngModel)]="passName" type="text" />
+  <input [(ngModel)]="passCount" type="number" />
+</div>
+<div>resultData: {{ resultData | json }}</div>
+<button (click)="openModal()">Open</button>
