@@ -2,15 +2,34 @@
   display: block;
   margin: 0 auto;
   margin-top: var(--jdmi-partition);
-  max-width: 800px;
+  max-width: 100%;
+  text-align: center;
+  box-sizing: border-box;
   &:first-child {
     margin-top: 0;
   }
-  img {
+  .box-wrap {
+    display: inline-block;
+    text-align: left;
+    max-width: 100%;
+  }
+  .mg {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: auto;
     border: none;
+  }
+  .description {
+    padding: 5px 5px 3px 5px;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--jdmi-color-8);
+  }
+  &.is-border {
+    .box-wrap {
+      padding: 5px;
+      border: 1px solid var(--jdmi-color-13);
+    }
   }
 }

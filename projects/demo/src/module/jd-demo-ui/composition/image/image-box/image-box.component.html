@@ -1,1 +1,4 @@
-<img [src]="src" [width]="width" [height]="height" [alt]="alt" />
+<div class="box-wrap">
+  <img class="mg" [src]="src" [alt]="alt" />
+  <p *ngIf="description" class="description">{{ description }}</p>
+</div>

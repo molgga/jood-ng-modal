@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { toSelector } from '../../../config/index';
 
 @Component({
@@ -13,6 +13,17 @@ export class ImageBoxComponent implements OnInit {
   @Input() width = 'auto';
   @Input() height = 'auto';
   @Input() alt = '';
+  @Input() description = '';
+
+  @Input()
+  @HostBinding('class.is-border')
+  isBorder = false;
+
+  @Input() imageAlign = 'center';
+  @HostBinding('class')
+  get classAlign() {
+    return this.imageAlign ? `align-${this.imageAlign}` : '';
+  }
 
   ngOnInit() {}
 }
