@@ -3,7 +3,6 @@
   margin: 0 auto;
   margin-top: var(--jdmi-partition);
   max-width: 100%;
-  text-align: center;
   box-sizing: border-box;
   &:first-child {
     margin-top: 0;
@@ -25,6 +24,15 @@
     text-align: right;
     font-size: 0.85rem;
     color: var(--jdmi-color-8);
+  }
+  &.align-left {
+    text-align: left;
+  }
+  &.align-center {
+    text-align: center;
+  }
+  &.align-right {
+    text-align: right;
   }
   &.is-border {
     .box-wrap {

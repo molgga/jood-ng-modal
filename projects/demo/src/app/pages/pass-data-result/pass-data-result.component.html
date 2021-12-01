@@ -2,7 +2,9 @@
   <jdmi-p>foo</jdmi-p>
 
   <sample-container></sample-container>
+</jdmi-section>
 
+<jdmi-section>
   <jdmi-h3>Container Component</jdmi-h3>
   <jdmi-code-box>
     <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
@@ -17,7 +19,9 @@
       </mat-tab>
     </mat-tab-group>
   </jdmi-code-box>
+</jdmi-section>
 
+<jdmi-section>
   <jdmi-h3>Modal Component</jdmi-h3>
   <jdmi-code-box>
     <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
@@ -35,24 +39,47 @@
 </jdmi-section>
 
 <jdmi-section>
+  <jdmi-h3>Template</jdmi-h3>
+  <jdmi-code-view
+    code="interface SampleModalData {
+passName: string;
+passCount: number;
+}
+
+interface SampleModalResult {
+resultName: string;
+resultCount: number;
+}"
+  ></jdmi-code-view>
+
+  <jdmi-code-view
+    code="@Inject(JdModalRefToken) private modalRef: JdModalRef<SampleModalResult, SampleModalData>"
+  ></jdmi-code-view>
   <jdmi-image-box
     src="assets/images/pass_data_n_result_1.png"
     [isBorder]="true"
-    imageAlign="center"
-    description="설정시 적절한 코드 힌트"
+    imageAlign="left"
+    description="modalRef 로 전달된 데이터에 대한 코드 힌트"
   ></jdmi-image-box>
 
   <jdmi-image-box
     src="assets/images/pass_data_n_result_2.png"
     [isBorder]="true"
-    imageAlign="center"
-    description="설정시 적절한 코드 힌트"
+    imageAlign="left"
+    description="modalRef 를 close 시 전달할 결과값에 대한 코드 힌트"
   ></jdmi-image-box>
 
+  <jdmi-code-view code="this.modalService.open<SampleModalResult, SampleModalData>({ ... })"></jdmi-code-view>
+  <jdmi-image-box
+    src="assets/images/pass_data_n_result_4.png"
+    [isBorder]="true"
+    imageAlign="left"
+    description="modalService 모달을 열때 전달해야할 데이터에 대한 코드 힌트"
+  ></jdmi-image-box>
   <jdmi-image-box
     src="assets/images/pass_data_n_result_3.png"
     [isBorder]="true"
-    imageAlign="center"
-    description="설정시 적절한 코드 힌트"
+    imageAlign="left"
+    description="modalService 모달의 결과값을 받을때 결과에 대한 코드 힌트"
   ></jdmi-image-box>
 </jdmi-section>
