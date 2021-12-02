@@ -1,4 +1,36 @@
 <jdmi-section>
+  <jdmi-h2>Installation</jdmi-h2>
+  <jdmi-p>
+    <mark class="jdmi-p-highlight">@jood/ng-modal</mark>은 <mark class="jdmi-p-highlight">Angular</mark>프로젝트에서
+    동작합니다.
+  </jdmi-p>
+  <!-- prettier-ignore -->
+  <jdmi-code-view code="$ npm install @jood/ng-modal"></jdmi-code-view>
+</jdmi-section>
+
+<jdmi-section>
+  <jdmi-h3>Quick start</jdmi-h3>
+  <jdmi-p>
+    module 에서 <mark class="jdmi-p-highlight">JdModalModule</mark>을 imports 에 추가하고, 몇가지 초기 설정을 하는것으로
+    사용할 수 있습니다. <br />사용법을 익히기 전에 아래 간단한 샘플 코드를 참고하세요.
+  </jdmi-p>
+
+  <jdmi-code-box>
+    <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
+      <mat-tab label="app.module.ts">
+        <jdmi-code-view [code]="codeAppModule"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="app.component.ts">
+        <jdmi-code-view [code]="codeAppComponent"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="sample-modal.component.ts">
+        <jdmi-code-view [code]="codeSampleModal"></jdmi-code-view>
+      </mat-tab>
+    </mat-tab-group>
+  </jdmi-code-box>
+</jdmi-section>
+
+<jdmi-section>
   <jdmi-h2>Motivation</jdmi-h2>
   <jdmi-p>
     FE 를 하다보면 동적으로 열리는 모달(컴포넌트) 기능을 자주 사용합니다.
@@ -30,36 +62,4 @@
     <mark class="jdmi-p-highlight">Angular Material</mark> 의
     <a target="_blank" href="https://material.angular.io/components/dialog/overview">Dialog</a> 와 거의 유사합니다.
   </jdmi-p>
-</jdmi-section>
-
-<jdmi-section>
-  <jdmi-h2>Installation</jdmi-h2>
-  <jdmi-p>
-    <mark class="jdmi-p-highlight">@jood/ng-modal</mark>은 <mark class="jdmi-p-highlight">Angular</mark>프로젝트에서
-    동작합니다.
-  </jdmi-p>
-  <!-- prettier-ignore -->
-  <jdmi-code-view code="$ npm install @jood/ng-modal"></jdmi-code-view>
-</jdmi-section>
-
-<jdmi-section>
-  <jdmi-h3>Quick start</jdmi-h3>
-  <jdmi-p>
-    module 에서 <mark class="jdmi-p-highlight">JdModalModule</mark>을 imports 에 추가하고, 몇가지 초기 설정을 하는것으로
-    사용할 수 있습니다. <br />사용법을 익히기 전에 아래 간단한 샘플 코드를 참고하세요.
-  </jdmi-p>
-
-  <jdmi-code-box>
-    <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
-      <mat-tab label="app.module.ts">
-        <jdmi-code-view [code]="codeAppModule"></jdmi-code-view>
-      </mat-tab>
-      <mat-tab label="app.component.ts">
-        <jdmi-code-view [code]="codeAppComponent"></jdmi-code-view>
-      </mat-tab>
-      <mat-tab label="sample-modal.component.ts">
-        <jdmi-code-view [code]="codeSampleModal"></jdmi-code-view>
-      </mat-tab>
-    </mat-tab-group>
-  </jdmi-code-box>
 </jdmi-section>
