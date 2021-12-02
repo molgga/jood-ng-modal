@@ -1,11 +1,14 @@
 <jdmi-section>
-  <jdmi-p>foo</jdmi-p>
-
+  <jdmi-h2>Pass Data&Result</jdmi-h2>
+  <jdmi-p>모달로 데이터를 전달하거나, 모달에서 데이터를 전달하는 방법</jdmi-p>
+</jdmi-section>
+<jdmi-section>
+  <jdmi-h3>Example</jdmi-h3>
   <sample-container></sample-container>
 </jdmi-section>
 
 <jdmi-section>
-  <jdmi-h3>Container Component</jdmi-h3>
+  <jdmi-h3>Example code: Container</jdmi-h3>
   <jdmi-code-box>
     <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
       <mat-tab label="container.component.ts">
@@ -22,7 +25,7 @@
 </jdmi-section>
 
 <jdmi-section>
-  <jdmi-h3>Modal Component</jdmi-h3>
+  <jdmi-h3>Example code: Modal</jdmi-h3>
   <jdmi-code-box>
     <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
       <mat-tab label="container.component.ts">
@@ -39,16 +42,23 @@
 </jdmi-section>
 
 <jdmi-section>
-  <jdmi-h3>Template</jdmi-h3>
+  <jdmi-h3>Generic Types</jdmi-h3>
+  <jdmi-p>
+    위에 예제를 보면 서비스(JdModalService)에서 모달을 열때, 모달(JdModalRef)을 Inject 할 때 선언된 Generic types 이
+    있습니다.
+    <br />첫번째는 모달로 부터 전달받는(결과) 타입, 두번째는 모달로 전달하는(데이터) 타입 입니다. <br />프로젝트 규모에
+    따라 관리해야 하는 모달의 수가 많아지고 주고받는 데이터가 많아질수록 기억하기 쉽지 않습니다. 언젠가는 유지보수를
+    해야하는 팀원과 나를 위해 선언 가능한 타입을 적극적으로 활용하기를 권하고 싶습니다.
+  </jdmi-p>
   <jdmi-code-view
     code="interface SampleModalData {
-passName: string;
-passCount: number;
+  passName: string;
+  passCount: number;
 }
 
 interface SampleModalResult {
-resultName: string;
-resultCount: number;
+  resultName: string;
+  resultCount: number;
 }"
   ></jdmi-code-view>
 
