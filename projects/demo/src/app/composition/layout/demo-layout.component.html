@@ -1,13 +1,26 @@
-<div>
-  <a routerLink="/">/home</a>
-  &nbsp;
-  <a routerLink="/getting-started">/getting-started</a>
-  &nbsp;
-  <a routerLink="/custom-open-strategy">/custom-open-strategy</a>
-  &nbsp;
-  <a routerLink="/pass-data-result">/pass-data-result</a>
+<div class="ly-head">
+  <button (click)="onDrawerToggle()">toggle</button>
+  head
 </div>
+<mat-drawer-container class="ly-body" autosize>
+  <mat-drawer #asideDrawer class="ly-aside" mode="side" [opened]="true">
+    <div>
+      <a routerLink="/">/home</a>
+    </div>
+    <div>
+      <a routerLink="/getting-started">/getting-started</a>
+    </div>
+    <div>
+      <a routerLink="/custom-open-strategy">/custom-open-strategy</a>
+    </div>
+    <div>
+      <a routerLink="/pass-data-result">/pass-data-result</a>
+    </div>
 
-<div class="ly-body">
-  <router-outlet></router-outlet>
-</div>
+    <button class="test-one">123123</button>
+  </mat-drawer>
+
+  <div class="ly-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

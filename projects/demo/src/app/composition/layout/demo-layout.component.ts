@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'lib-demo-layout',
@@ -8,5 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class DemoLayoutComponent implements OnInit {
   constructor() {}
 
+  @ViewChild('asideDrawer') asideDrawer!: MatDrawer;
+
   ngOnInit() {}
+
+  ngAfterViewInit() {
+    console.log(this.asideDrawer);
+  }
+
+  onDrawerToggle() {
+    this.asideDrawer.toggle();
+  }
 }

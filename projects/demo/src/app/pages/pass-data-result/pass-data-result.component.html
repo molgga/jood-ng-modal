@@ -1,5 +1,5 @@
 <jdmi-section>
-  <jdmi-h2>Pass Data&Result</jdmi-h2>
+  <jdmi-h2>Pass Data&Result 😎</jdmi-h2>
   <jdmi-p>모달로 데이터를 전달하거나, 모달에서 데이터를 전달하는 방법</jdmi-p>
 </jdmi-section>
 <jdmi-section>
@@ -48,7 +48,7 @@
     있습니다.
     <br />첫번째는 모달로 부터 전달받는(결과) 타입, 두번째는 모달로 전달하는(데이터) 타입 입니다. <br />프로젝트 규모에
     따라 관리해야 하는 모달의 수가 많아지고 주고받는 데이터가 많아질수록 기억하기 쉽지 않습니다. 언젠가는 유지보수를
-    해야하는 팀원과 나를 위해 선언 가능한 타입을 적극적으로 활용하기를 권하고 싶습니다.
+    해야하는 팀원과 나를 위해 선언 가능한 타입을 적절히 사용하세요.
   </jdmi-p>
   <jdmi-code-view
     code="interface SampleModalData {
@@ -64,36 +64,39 @@ interface SampleModalResult {
 
   <jdmi-partition></jdmi-partition>
 
+  <jdmi-h4>JdModalService Open & Result</jdmi-h4>
+  <jdmi-p>모달을 열때와 결과를 구독할 때의 코드 힌트 예</jdmi-p>
+  <jdmi-code-view code="this.modalService.open<SampleModalResult, SampleModalData>({ ... })"></jdmi-code-view>
+  <jdmi-image-box
+    src="assets/images/pass_data_n_result_4.png"
+    [isBorder]="true"
+    imageAlign="left"
+    description="modalService 모달을 열때 전달해야할 데이터에 대한 코드 힌트"
+  ></jdmi-image-box>
+  <jdmi-image-box
+    src="assets/images/pass_data_n_result_3.png"
+    [isBorder]="true"
+    imageAlign="left"
+    description="modalService 모달의 결과값을 받을때 결과에 대한 코드 힌트"
+  ></jdmi-image-box>
+
+  <jdmi-partition></jdmi-partition>
+
+  <jdmi-h4>JdModalRef Inject</jdmi-h4>
   <jdmi-code-view
     code="@Inject(JdModalRefToken) private modalRef: JdModalRef<SampleModalResult, SampleModalData>"
   ></jdmi-code-view>
   <jdmi-image-box
     src="assets/images/pass_data_n_result_1.png"
     [isBorder]="true"
-    imageAlign="center"
+    imageAlign="left"
     description="modalRef 로 전달된 데이터에 대한 코드 힌트"
   ></jdmi-image-box>
 
   <jdmi-image-box
     src="assets/images/pass_data_n_result_2.png"
     [isBorder]="true"
-    imageAlign="center"
+    imageAlign="left"
     description="modalRef 를 close 시 전달할 결과값에 대한 코드 힌트"
-  ></jdmi-image-box>
-
-  <jdmi-partition></jdmi-partition>
-
-  <jdmi-code-view code="this.modalService.open<SampleModalResult, SampleModalData>({ ... })"></jdmi-code-view>
-  <jdmi-image-box
-    src="assets/images/pass_data_n_result_4.png"
-    [isBorder]="true"
-    imageAlign="center"
-    description="modalService 모달을 열때 전달해야할 데이터에 대한 코드 힌트"
-  ></jdmi-image-box>
-  <jdmi-image-box
-    src="assets/images/pass_data_n_result_3.png"
-    [isBorder]="true"
-    imageAlign="center"
-    description="modalService 모달의 결과값을 받을때 결과에 대한 코드 힌트"
   ></jdmi-image-box>
 </jdmi-section>

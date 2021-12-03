@@ -1,6 +1,18 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .ly-head {
+    height: 50px;
+    background: #333;
+  }
   .ly-body {
-    padding-bottom: 100px;
+    flex: 1;
+    .ly-aside {
+      padding: 20px;
+    }
+    .ly-content {
+      padding-bottom: 100px;
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DemoLayoutComponent } from 'projects/demo/src/app/composition/layout/demo-layout.component';
+import { SharedModule } from 'projects/demo/src/app/pages/shared.module';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [DemoLayoutComponent],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), SharedModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
