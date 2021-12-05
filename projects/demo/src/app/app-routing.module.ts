@@ -14,14 +14,17 @@ const routes: Routes = [
       },
       {
         path: 'getting-started',
+        data: { key: 'getting-started' },
         loadChildren: () => import('./pages/getting-started/page.module').then((m) => m.PageModule),
       },
       {
         path: 'custom-open-strategy',
+        data: { key: 'custom-open-strategy' },
         loadChildren: () => import('./pages/custom-open-strategy/page.module').then((m) => m.PageModule),
       },
       {
         path: 'pass-data-result',
+        data: { key: 'pass-data-result' },
         loadChildren: () => import('./pages/pass-data-result/page.module').then((m) => m.PageModule),
       },
     ],

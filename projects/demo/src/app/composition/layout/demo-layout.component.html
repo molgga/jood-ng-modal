@@ -1,23 +1,36 @@
 <div class="ly-head">
-  <button (click)="onDrawerToggle()">toggle</button>
-  head
+  <div class="aside">
+    <button class="drawer-trigger" (click)="onDrawerToggle()">
+      <span class="label">menu</span>
+      <span class="bar b1"></span>
+      <span class="bar b2"></span>
+      <span class="bar b3"></span>
+    </button>
+  </div>
+  <div class="hbar">
+    <h1 class="bi"><a class="anchor" href="/">@jood/ng-modal</a></h1>
+  </div>
+  <div class="bside">
+    <div class="etc-menus">
+      <a class="anchor" target="_blank" href="https://github.com/molgga/jood-ng-modal">
+        Github
+        <span class="icon material-icons">open_in_new</span>
+      </a>
+    </div>
+  </div>
 </div>
 <mat-drawer-container class="ly-body" autosize>
   <mat-drawer #asideDrawer class="ly-aside" mode="side" [opened]="true">
-    <div>
-      <a routerLink="/">/home</a>
+    <div class="menu-list">
+      <ng-container *ngFor="let group of routeList">
+        <div *ngFor="let item of group.children" class="menu-item" [class.activate]="item.key === activateRouteKey">
+          <a matRipple class="anchor" [routerLink]="item.path">
+            <span class="label">{{ item.title }}</span>
+            <span class="desc">{{ item.description }}</span>
+          </a>
+        </div>
+      </ng-container>
     </div>
-    <div>
-      <a routerLink="/getting-started">/getting-started</a>
-    </div>
-    <div>
-      <a routerLink="/custom-open-strategy">/custom-open-strategy</a>
-    </div>
-    <div>
-      <a routerLink="/pass-data-result">/pass-data-result</a>
-    </div>
-
-    <button class="test-one">123123</button>
   </mat-drawer>
 
   <div class="ly-content">
