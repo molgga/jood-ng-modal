@@ -6,10 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatRippleModule } from '@angular/material/core';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [],
-  imports: [MatFormFieldModule, MatInputModule],
+  imports: [MatFormFieldModule, MatInputModule, LayoutModule],
   providers: [],
   exports: [
     MatButtonModule,

@@ -14,28 +14,25 @@ import { JdModalEntryService } from './jd-modal-entry.service';
 export class JdModalEntryComponent {
   constructor(private entryService: JdModalEntryService, private refModalContainer: ElementRef<HTMLElement>) {}
 
-  /** @internal */
   ngAfterViewInit() {
     this.entryService.setHostElement(this.refModalContainer.nativeElement);
     this.entryService.setPanelElement(this.refModalPanel.nativeElement);
     this.entryService.mounted();
   }
 
-  /** @internal */
   ngOnDestroy() {
     this.entryService.destroy();
   }
 
   @ViewChild('refModalPanel') refModalPanel!: ElementRef<HTMLElement>;
+
   @HostBinding('tabindex') tabIndex = 0;
 
-  @HostBinding('class')
-  get hostClass() {
+  @HostBinding('class') get hostClass() {
     return this.entryService.classes;
   }
 
-  @HostBinding('style')
-  get hostStyle() {
+  @HostBinding('style') get hostStyle() {
     return this.entryService.styleSet.entry;
   }
 

@@ -20,11 +20,11 @@
   </div>
 </div>
 <mat-drawer-container class="ly-body" autosize>
-  <mat-drawer #asideDrawer class="ly-aside" mode="side" [opened]="true">
+  <mat-drawer #asideDrawer class="ly-aside" [mode]="drawerMode" [opened]="drawerOpened">
     <div class="menu-list">
       <ng-container *ngFor="let group of routeList">
-        <div *ngFor="let item of group.children" class="menu-item" [class.activate]="item.key === activateRouteKey">
-          <a matRipple class="anchor" [routerLink]="item.path">
+        <div *ngFor="let item of group.children" class="menu-item" [class.activate]="item.key === routeActivateKey">
+          <a matRipple class="anchor" [routerLink]="item.path" (click)="onDrawerRouteClick()">
             <span class="label">{{ item.title }}</span>
             <span class="desc">{{ item.description }}</span>
           </a>
