@@ -10,7 +10,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./pages/home/page.module').then((m) => m.PageModule),
+        // loadChildren: () => import('./pages/home/page.module').then((m) => m.PageModule),
+        loadChildren: () => import('./pages/getting-started/page.module').then((m) => m.PageModule),
       },
       {
         path: 'getting-started',
