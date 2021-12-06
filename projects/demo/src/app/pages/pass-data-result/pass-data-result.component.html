@@ -41,6 +41,8 @@
   </jdmi-code-box>
 </jdmi-section>
 
+<jdmi-partition></jdmi-partition>
+
 <jdmi-section>
   <jdmi-h3>Generic Types</jdmi-h3>
   <jdmi-p>
@@ -62,9 +64,7 @@ interface SampleModalResult {
 }"
   ></jdmi-code-view>
 
-  <jdmi-partition></jdmi-partition>
-
-  <jdmi-h4>JdModalService Open & Result</jdmi-h4>
+  <jdmi-h4>JdModalService Data&Result</jdmi-h4>
   <jdmi-p>모달을 열때와 결과를 구독할 때의 코드 힌트 예</jdmi-p>
   <jdmi-code-view code="this.modalService.open<SampleModalResult, SampleModalData>({ ... })"></jdmi-code-view>
   <jdmi-image-box
@@ -80,9 +80,7 @@ interface SampleModalResult {
     description="modalService 모달의 결과값을 받을때 결과에 대한 코드 힌트"
   ></jdmi-image-box>
 
-  <jdmi-partition></jdmi-partition>
-
-  <jdmi-h4>JdModalRef Inject</jdmi-h4>
+  <jdmi-h4>JdModalRef Data&Result</jdmi-h4>
   <jdmi-code-view
     code="@Inject(JdModalRefToken) private modalRef: JdModalRef<SampleModalResult, SampleModalData>"
   ></jdmi-code-view>
