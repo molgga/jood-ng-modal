@@ -6,11 +6,11 @@ import { ModalBoxComponent } from './modal-box/modal-box.component';
 import { SampleStrategyComponent } from './sample-strategy/sample-strategy.component';
 
 @Component({
-  selector: 'lib-custom-open-strategy',
-  templateUrl: './custom-open-strategy.component.html',
-  styleUrls: ['./custom-open-strategy.component.scss'],
+  selector: 'lib-open-strategy',
+  templateUrl: './open-strategy.component.html',
+  styleUrls: ['./open-strategy.component.scss'],
 })
-export class CustomOpenStrategyComponent implements OnInit {
+export class OpenStrategyComponent implements OnInit {
   constructor(private modalService: JdModalService) {}
 
   ngOnInit() {}
@@ -18,6 +18,7 @@ export class CustomOpenStrategyComponent implements OnInit {
   codeCustomOpenStrategy = require('!raw-loader!./code/codeCustomOpenStrategy.txt').default;
   codeDemoComponent = require('!raw-loader!./code/codeDemoComponent.txt').default;
   codeModalBoxComponent = require('!raw-loader!./code/codeModalBoxComponent.txt').default;
+  codeEntryHtml = require('!raw-loader!./code/codeEntryHtml.txt').default;
 
   onOpen() {
     this.modalService.open({

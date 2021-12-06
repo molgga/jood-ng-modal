@@ -19,9 +19,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/getting-started/page.module').then((m) => m.PageModule),
       },
       {
-        path: 'custom-open-strategy',
-        data: { key: 'custom-open-strategy' },
-        loadChildren: () => import('./pages/custom-open-strategy/page.module').then((m) => m.PageModule),
+        path: 'open-strategy',
+        data: { key: 'open-strategy' },
+        loadChildren: () => import('./pages/open-strategy/page.module').then((m) => m.PageModule),
       },
       {
         path: 'pass-data-result',

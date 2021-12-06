@@ -1,11 +1,35 @@
 <jdmi-section>
-  <jdmi-h2>Installation</jdmi-h2>
-  <!-- prettier-ignore -->
-  <jdmi-code-view code="$ npm install @jood/ng-modal"></jdmi-code-view>
+  <jdmi-h2>목표</jdmi-h2>
+  <jdmi-p>
+    FE 를 하다보면 모달 기능을 자주 사용합니다. 그만큼 모달 기능을 제공하는 좋은 라이브러리들이 아주 많습니다.
+    <br />하지만, 백오피스가 아닌 사용자 서비스의 경우 디자인/기획/개발에 필요한 요구사항을 모두 만족하는 라이브러리를
+    찾거나 커스텀 하는건 쉽지 않았습니다. <mark class="jdmi-p-highlight">@jood/ng-modal</mark> 역시 모든 요구사항을
+    만족하긴 어렵겠지만,
+    <mark class="jdmi-p-highlight">모달을 사용하면서 겪었던 어려움과 필요한 기능을 해결하기 위해</mark> 아래 목표를 두고
+    제작 되었습니다.
+  </jdmi-p>
+
+  <jdmi-p>
+    <ul class="jdmi-p-ul">
+      <li class="jdmi-p-li">모달의 형태를 이루는 디자인 변경이 가능해야 한다.</li>
+      <li class="jdmi-p-li">모달이 열리거나 닫히는 스타일(애니메이션) 정의가 가능해야 한다.</li>
+      <li class="jdmi-p-li">모달로 열리는 컴포넌트와 그 하위 컴포넌트에 데이터 전달이 가능해야 한다.</li>
+      <li class="jdmi-p-li">데이터 전달은 Props drilling 이 아닌 방법으로 제공되어야 한다.</li>
+      <li class="jdmi-p-li">열려진 모달에서 전달한 결과를 (원한다면 어디든) 전달 받을 수 있어야 한다.</li>
+      <li class="jdmi-p-li">모달이 열리거나 닫히는 상태를 (원한다면 어디든) 관찰 가능해야 한다.</li>
+    </ul>
+    <br />
+    모달로 열리는 컴포넌트에 데이터를 전달하거나, 결과를 받는 방식 등은
+    <mark class="jdmi-p-highlight">Angular Material</mark> 의
+    <a target="_blank" href="https://material.angular.io/components/dialog/overview">Dialog</a> 와 거의 유사합니다.
+  </jdmi-p>
 </jdmi-section>
 
 <jdmi-section>
-  <jdmi-h3>Quick start</jdmi-h3>
+  <jdmi-h2>설치 및 시작</jdmi-h2>
+  <!-- prettier-ignore -->
+  <jdmi-code-view code="$ npm install @jood/ng-modal"></jdmi-code-view>
+
   <jdmi-p>
     module 에서 <mark class="jdmi-p-highlight">JdModalModule</mark>을 imports 에 추가하고, 몇가지 초기 설정을 하는것으로
     사용할 수 있습니다. <br />사용법을 익히기 전에 아래 간단한 샘플 코드를 참고하세요.
@@ -25,39 +49,3 @@
     </mat-tab-group>
   </jdmi-code-box>
 </jdmi-section>
-
-<!--
-<jdmi-section>
-  <jdmi-h2>Motivation</jdmi-h2>
-  <jdmi-p>
-    FE 를 하다보면 동적으로 열리는 모달(컴포넌트) 기능을 자주 사용합니다.
-    <br />모달 기능을 제공하는 좋은 라이브러리는 아주 많습니다. <br />하지만, 실제 업무를 하면서 회사 또는 팀 내부에서
-    필요한 요구사항을 모두 만족하는 라이브러리를 찾거나, 커스텀 하는건 쉽지 않았습니다. <br />
-    <mark class="jdmi-p-highlight">@jood/ng-modal</mark> 은
-    <mark class="jdmi-p-highlight">모달을 사용하면서 겪었던 어려움과 필요한 기능을 해결하기 위해</mark> 아래 목표를 두고
-    제작 되었습니다.
-  </jdmi-p>
-
-  <jdmi-h4>Design</jdmi-h4>
-  <jdmi-p>
-    <ul class="jdmi-p-ul">
-      <li class="jdmi-p-li">모달의 형태를 이루는 디자인 변경이 가능해야 한다.</li>
-      <li class="jdmi-p-li">모달이 열리거나 닫히는 스타일(애니메이션) 정의가 가능해야 한다.</li>
-    </ul>
-  </jdmi-p>
-
-  <jdmi-h4>Development</jdmi-h4>
-  <jdmi-p>
-    <ul class="jdmi-p-ul">
-      <li class="jdmi-p-li">모달로 열리는 컴포넌트와 그 하위 컴포넌트에 데이터 전달이 가능해야 한다.</li>
-      <li class="jdmi-p-li">데이터 전달은 Props drilling 이 아닌 방법으로 제공되어야 한다.</li>
-      <li class="jdmi-p-li">열려진 모달에서 전달한 결과를 (원한다면 어디든) 전달 받을 수 있어야 한다.</li>
-      <li class="jdmi-p-li">모달이 열리거나 닫히는 상태를 (원한다면 어디든) 관찰 가능해야 한다.</li>
-    </ul>
-    <br />
-    모달로 열리는 컴포넌트에 데이터를 전달하거나, 결과를 받는 방식 등은
-    <mark class="jdmi-p-highlight">Angular Material</mark> 의
-    <a target="_blank" href="https://material.angular.io/components/dialog/overview">Dialog</a> 와 거의 유사합니다.
-  </jdmi-p>
-</jdmi-section>
--->

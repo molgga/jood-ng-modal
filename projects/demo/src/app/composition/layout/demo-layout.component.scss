@@ -21,7 +21,7 @@
   .ly-body {
     flex: 1;
     .ly-aside {
-      width: 240px;
+      width: 280px;
       background: #fff;
     }
     .ly-content {
@@ -83,15 +83,15 @@
         position: relative;
         display: block;
         padding: 10px 15px;
-        font-size: 0.85rem;
-        color: var(--jdmi-color-5);
+        font-size: 0.9rem;
+        color: var(--jdmi-color-4);
         .label {
           display: block;
         }
         .desc {
           display: block;
-          font-size: 0.7rem;
-          color: var(--jdmi-color-10);
+          font-size: 0.75rem;
+          color: var(--jdmi-color-9);
         }
         &:before {
           content: "";

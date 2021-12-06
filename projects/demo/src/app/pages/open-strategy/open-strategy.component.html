@@ -1,0 +1,149 @@
+<jdmi-section>
+  <jdmi-h2>OpenStrategy</jdmi-h2>
+  <jdmi-p>
+    OpenStrategy 는 <mark class="jdmi-p-highlight">모달이 열리고 닫을 때의 애니메이션(CSS style) 을 정의</mark>합니다.
+    <br />interface OpenStrategy 을 구현하면 모달이 열리거나, 닫힐 때의 애니메이션을 없애거나 재정의 할 수 있습니다.
+    <br />일반적으로 사용되는 모달 애니메이션은 이미 몇가지 구현되어 있습니다.
+    <ul class="jdmi-p-ul">
+      <li class="jdmi-p-li">
+        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('')">
+          StackNormal(기본값)
+        </button>
+        중앙에서 열리고 닫힘.
+      </li>
+      <li class="jdmi-p-li">
+        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('left')">
+          StackLeft
+        </button>
+        좌측에서 우측으로 열리고 닫힘.
+      </li>
+      <li class="jdmi-p-li">
+        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('right')">
+          StackRight
+        </button>
+        우측에서 좌측으로 열리고 닫힘.
+      </li>
+      <li class="jdmi-p-li">
+        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('top')">
+          StackTop
+        </button>
+        위에서 아래로 열리고 닫힘.
+      </li>
+      <li class="jdmi-p-li">
+        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('bottom')">
+          StackBottom
+        </button>
+        아래에서 위로 열리고 닫힘.
+      </li>
+    </ul>
+  </jdmi-p>
+
+  <jdmi-h4>적용 예</jdmi-h4>
+  <jdmi-hsplit>
+    <!-- prettier-ignore -->
+    <jdmi-code-view slot="aside" code="// Example 1
+onOpen() {
+  this.modalService.open({
+    component: SomeComponent,
+    openStrategy: new StackBottom(),
+    floatingMode: true,
+  });
+}">
+    </jdmi-code-view>
+
+    <!-- prettier-ignore -->
+    <jdmi-code-view slot="bside" code="// Example 2
+onOpen() {
+  this.modalService.open({
+    component: SomeComponent,
+    openStrategy: new StackRight(),
+    floatingMode: true,
+  });
+}">
+      </jdmi-code-view>
+  </jdmi-hsplit>
+</jdmi-section>
+
+<jdmi-partition></jdmi-partition>
+
+<jdmi-section>
+  <jdmi-h2>Implements OpenStrategy</jdmi-h2>
+  <jdmi-p>
+    <mark class="jdmi-p-highlight">OpenStrategy</mark> 를 구현해서 쉽게 애니메이션(style)을 변경할 수 있습니다.
+    <br />나만의 OpenStartegy 를 직접 구현하기 위해 몇가지는 알고 진행하는게 좋습니다.
+    <ul class="jdmi-p-ul">
+      <li class="jdmi-p-li">위에서 이미 정의되어 있던 StackNormal, StackBottom 등 은 OpenStrategy 의 구현체 입니다.</li>
+      <li class="jdmi-p-li">
+        OpenStrategy 는 모달의 주요 동작 시점인 기본 상태(base) -> 열리기 시작(opening) -> 완전히 열림(opened) -> 닫히기
+        시작(closing)할 때의 style(CSS)세트를 반환하고 사용하기 위한 규격입니다.
+      </li>
+      <li class="jdmi-p-li">
+        주요 시점인 각 <mark class="jdmi-p-highlight">Method<sup>1)</sup></mark>
+        는 style(CSS) 세트를 반환 하고 주로 EntryComponent에서 사용됩니다.
+      </li>
+      <li class="jdmi-p-li">반환된 style 은 merge 되어 (EntryComponent 의) 각 패널에 style 을 적용합니다.</li>
+    </ul>
+  </jdmi-p>
+</jdmi-section>
+
+<jdmi-section>
+  <jdmi-h3>구현해야할 Method<sup>1)</sup></jdmi-h3>
+
+  <jdmi-h4>base()</jdmi-h4>
+  <jdmi-p>모달이 열릴때 부터 닫힐 때까지 기본 style 을 반환합니다.</jdmi-p>
+
+  <jdmi-h4>shadow()</jdmi-h4>
+  <jdmi-p>
+    모달이 열릴때 부터 닫힐 때까지 기본 shadow 처리를 반환합니다. <br />shadow 도 base(), opening(), opened() 등 에서
+    style 로 처리가 가능합니다만, 실 사용사례에서 shadow 만 제거를 해야하는 경우(퍼포먼스 문제 등)로 인해 별도 정의가
+    가능하도록 되어 있습니다. <br />shadow 는 disableShadow 옵션과 연관이 있습니다.
+  </jdmi-p>
+
+  <jdmi-h4>opening() | floatingOpening()</jdmi-h4>
+  <jdmi-p>
+    모달이 열리기 시작할 때의 style 를 반환합니다. 모달이 <mark class="jdmi-p-highlight">중첩</mark>될 때의 처리를 위해,
+    opening 과 floatingOpening 으로 구분되어 있습니다.
+
+    <br />floatingMode 가 false(기본값)일 때 opening() 이 사용 됩니다. 모달이 중첩되어 열리는것 상관없이 한가지의 style
+    만 반환합니다. <br />floatingMode 가 true 일 때 floatingOpening() 이 사용 됩니다. 모달이 중첩되는 순서(index)에 따라
+    사용될 style[] 를 반환합니다. <br />floatingMode 옵션과 연관이 있습니다.
+  </jdmi-p>
+
+  <jdmi-h4>opened()</jdmi-h4>
+  <jdmi-p>모달이 완전히 열린 후 적용될 style 을 반환합니다.</jdmi-p>
+
+  <jdmi-h4>closing()</jdmi-h4>
+  <jdmi-p>모달이 닫히기 시작할 때의 style 을 반환합니다.</jdmi-p>
+</jdmi-section>
+
+<jdmi-partition></jdmi-partition>
+
+<jdmi-section>
+  <jdmi-h2>Example</jdmi-h2>
+  <jdmi-p>
+    OpenStartegy 를 구현한 샘플입니다. CustomOpenStrategy.ts 의 코드가 조금 방대해 보이지만, style 정의 코드 외에
+    특별한건 없다는걸 볼 수 있습니다.
+    <br />반환하는 style 들이 어떻게 사용되는지 조금 더 이해하기 쉽도록 맨 밑에 EntryComponent 의 html 코드를
+    넣어놨습니다.
+  </jdmi-p>
+  <jdmi-p>
+    <button mat-stroked-button color="primary" (click)="onOpen()">CustomOpenStrategy 으로 열기</button>
+  </jdmi-p>
+  <jdmi-code-box>
+    <mat-tab-group animationDuration="0ms" color="primary" backgroundColor="primary">
+      <mat-tab label="CustomOpenStrategy.ts">
+        <jdmi-code-view [code]="codeCustomOpenStrategy"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="DemoComponent.ts">
+        <jdmi-code-view [code]="codeDemoComponent"></jdmi-code-view>
+      </mat-tab>
+      <mat-tab label="ModalBoxComponent.ts">
+        <jdmi-code-view [code]="codeModalBoxComponent"></jdmi-code-view>
+      </mat-tab>
+    </mat-tab-group>
+  </jdmi-code-box>
+
+  <jdmi-h4>이해를 돕기위한 EntryComponent 의 HTML</jdmi-h4>
+  <jdmi-p>styles 라는 것의 modal, overlay 등이 html 의 style 속성에 사용된것을 볼 수 있습니다.</jdmi-p>
+  <jdmi-code-view [code]="codeEntryHtml"></jdmi-code-view>
+</jdmi-section>

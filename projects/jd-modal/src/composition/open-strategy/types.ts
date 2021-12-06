@@ -1,15 +1,17 @@
 import { Properties as CSSProperties } from 'csstype';
 
+export type StyleProperties = CSSProperties;
+
 /**
  * 오픈 전략 스타일 세트
  * @public
  */
-export interface OpenStrategyStyleSet {
-  entry?: CSSProperties;
-  modal?: CSSProperties;
-  pivot?: CSSProperties;
-  overlay?: CSSProperties;
-}
+export type OpenStrategyStyleSet<T extends {} = any> = T & {
+  entry?: StyleProperties;
+  modal?: StyleProperties;
+  pivot?: StyleProperties;
+  overlay?: StyleProperties;
+};
 
 /**
  * 오픈 전략
