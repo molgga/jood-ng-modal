@@ -10,4 +10,3 @@ with Angular.
 [Docs](https://molgga.github.io/jood-ng-modal) | 
 [Github](https://github.com/molgga/jood-ng-modal) | 
 [NPM](https://www.npmjs.com/package/@jood/ng-modal)
-
