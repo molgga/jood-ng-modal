@@ -24,6 +24,6 @@ jobs:
           npm run ci:build
           npm run ci:test
 
-      # - uses: codecov/codecov-action@v1
-      #   with:
-      #     directory: ./coverage
+      - uses: codecov/codecov-action@v1
+        with:
+          directory: ./coverage
