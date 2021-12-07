@@ -16,7 +16,7 @@
     "package:build": "ng build jd-modal --prod",
     "package:test": "ng test jd-modal --code-coverage",
     "page:build": "ng build demo",
-    "page:to-docs": "copyfiles -u 2 ./dist/demo/* ./dist/demo/**/* ./docs",
+    "page:to-docs": "copyfiles -u 2 \"./dist/demo/**/*\" ./docs",
     "page:clear": "rm -rf docs",
     "page:expose": "npm run page:build && npm run page:to-docs",
     "ci:test": "ng test jd-modal --watch=false --code-coverage --browsers=ChromeHeadless",

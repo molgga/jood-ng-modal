@@ -2,37 +2,42 @@ import { OpenStrategy, OpenStrategyStyleSet } from '@jood/ng-modal';
 
 export class CustomOpenStrategy implements OpenStrategy {
   duration = 240;
-  // base styles
+
   base(duration: number = 240): OpenStrategyStyleSet {
     this.duration = duration;
     const timingOpacity = this.duration * 0.85;
     return {
-      modal: { transformStyle: 'preserve-3d', perspective: '1000px' },
+      modal: {
+        transformStyle: 'preserve-3d',
+        perspective: '1000px',
+      },
       pivot: {
         transition: `transform ${duration}ms cubic-bezier(0.215, 0.610, 0.355, 1), opacity ${timingOpacity}ms`,
         transform: 'translateY(-300px) rotateX(135deg) scale(0.2, 0.2)',
         opacity: 0,
       },
-      overlay: { opacity: 0, backgroundColor: '#f00' },
+      overlay: {
+        opacity: 0,
+      },
     };
   }
 
-  // base shadow
   shadow(): OpenStrategyStyleSet {
-    return {};
+    return {
+      pivot: {},
+    };
   }
 
-  // option - flotingMode: false (default)
-  // start open styles
   opening(): OpenStrategyStyleSet {
     return {
-      pivot: { transform: 'translateY(50px) rotateX(15deg) scale(1, 1)', opacity: 1 },
+      pivot: {
+        transform: 'translateY(50px) rotateX(15deg) scale(1, 1)',
+        opacity: 1,
+      },
       overlay: { opacity: 0.3 },
     };
   }
 
-  // option - flotingMode: true
-  // start open styles
   floatingOpening(): OpenStrategyStyleSet[] {
     return [
       {
@@ -48,19 +53,20 @@ export class CustomOpenStrategy implements OpenStrategy {
       {
         // first
         pivot: { transform: 'translateY(50px) rotateX(15deg) scale(1, 1)', opacity: 1 },
-        overlay: { opacity: 0.5 },
+        overlay: { opacity: 0.5, backgroundColor: 'rgba(255,0,0,1)' },
       },
     ];
   }
 
-  // opened
   opened(): OpenStrategyStyleSet {
     return {
-      pivot: { transitionTimingFunction: 'cubic-bezier(0.215, 0.610, 0.355, 1)', transform: 'translateY(0px)' },
+      pivot: {
+        transitionTimingFunction: 'cubic-bezier(0.215, 0.610, 0.355, 1)',
+        transform: 'translateY(0px)',
+      },
     };
   }
 
-  // start close
   closing(): OpenStrategyStyleSet {
     return {
       pivot: {

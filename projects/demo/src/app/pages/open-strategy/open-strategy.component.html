@@ -4,38 +4,22 @@
     OpenStrategy 는 <mark class="jdmi-p-highlight">모달이 열리고 닫을 때의 애니메이션(CSS style) 을 정의</mark>합니다.
     <br />interface OpenStrategy 을 구현하면 모달이 열리거나, 닫힐 때의 애니메이션을 없애거나 재정의 할 수 있습니다.
     <br />일반적으로 사용되는 모달 애니메이션은 이미 몇가지 구현되어 있습니다.
-    <ul class="jdmi-p-ul">
-      <li class="jdmi-p-li">
-        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('')">
-          StackNormal(기본값)
-        </button>
-        중앙에서 열리고 닫힘.
-      </li>
-      <li class="jdmi-p-li">
-        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('left')">
-          StackLeft
-        </button>
-        좌측에서 우측으로 열리고 닫힘.
-      </li>
-      <li class="jdmi-p-li">
-        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('right')">
-          StackRight
-        </button>
-        우측에서 좌측으로 열리고 닫힘.
-      </li>
-      <li class="jdmi-p-li">
-        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('top')">
-          StackTop
-        </button>
-        위에서 아래로 열리고 닫힘.
-      </li>
-      <li class="jdmi-p-li">
-        <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('bottom')">
-          StackBottom
-        </button>
-        아래에서 위로 열리고 닫힘.
-      </li>
-    </ul>
+    <br />
+    <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('')">
+      StackNormal(기본값)
+    </button>
+    <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('left')">
+      StackLeft
+    </button>
+    <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('right')">
+      StackRight
+    </button>
+    <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('top')">
+      StackTop
+    </button>
+    <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="onOpenSampleStrategy('bottom')">
+      StackBottom
+    </button>
   </jdmi-p>
 
   <jdmi-h4>적용 예</jdmi-h4>
