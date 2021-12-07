@@ -29,7 +29,6 @@ export class JdModalProviderComponent {
     return this.providerService.classes;
   }
 
-  /** @internal */
   trackModalId(index: number, modal: JdModalRef) {
     return modal.id;
   }

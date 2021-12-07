@@ -15,7 +15,6 @@ export class JdModalComponentResolver {
     @Inject(JdModalRefToken) private modalRef: JdModalRef
   ) {}
 
-  /** @internal */
   ngOnInit() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.modalRef.component);
     this.viewContainerRef.clear();

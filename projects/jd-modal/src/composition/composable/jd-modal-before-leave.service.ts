@@ -15,13 +15,9 @@ export class JdModalBeforeLeaveService {
     this.handleBeforeLeaveIntercept = this.onInterceptBeforeLeave.bind(this);
   }
 
-  /** @internal */
   protected holdBeforeLeave = false;
-  /** @internal */
   protected fnValidate: CastFunction<boolean> = async () => Promise.resolve(true);
-  /** @internal */
   protected fnConfirm: CastFunction<boolean> = async () => Promise.resolve(true);
-  /** @internal */
   protected handleBeforeLeaveIntercept: (evt: ModalPopStateEvent) => void;
 
   /**
