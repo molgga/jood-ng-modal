@@ -113,7 +113,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * document touchstart
-   * @internal
    * @param evt - 이벤트
    */
   protected onTouchStart(evt: TouchEvent) {
@@ -133,7 +132,6 @@ export class JdModalPullDownCloseService {
   /**
    * document touchmove 전 방향 체크.
    * x 축 이동으로 판단하면 onTouchMove 를 하지 않음.
-   * @internal
    * @param evt - 이벤트
    */
   protected onTouchMoveIntercept(evt: TouchEvent) {
@@ -155,7 +153,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * document touchmove
-   * @internal
    * @param evt - 이벤트
    */
   protected onTouchMove(evt: TouchEvent) {
@@ -166,7 +163,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * document touchend
-   * @internal
    * @param evt - 이벤트
    */
   protected onTouchEnd(evt: TouchEvent) {
@@ -185,7 +181,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * 스크롤 컨테이너(DOM) 의 prevent 처리
-   * @internal
    * @param evt - 이벤트
    */
   protected onContainerTouchPrevent(evt: TouchEvent) {
@@ -196,7 +191,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * 상태 업데이트
-   * @internal
    */
   protected updateState() {
     const y = Math.max(0, this.moveY);
@@ -205,7 +199,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * 드래깅 시작
-   * @internal
    * @param startX - 시작 X
    * @param startY - 시작 Y
    */
@@ -221,7 +214,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * 드래깅 클리어
-   * @internal
    */
   protected clearFrame() {
     cancelAnimationFrame(this.requestFrame);
@@ -230,7 +222,6 @@ export class JdModalPullDownCloseService {
 
   /**
    * 드래깅 릴리즈
-   * @internal
    */
   protected animateFrame() {
     const targetY = 0;

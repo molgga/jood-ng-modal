@@ -15,7 +15,6 @@ export class JdModalEntryResolver {
 
   @Input() modalIndex: number = -1;
 
-  /** @internal */
   ngOnInit() {
     const providers = [{ provide: JdModalRefToken, useValue: this.modalRef }];
     const injector = Injector.create({ providers });
@@ -25,7 +24,6 @@ export class JdModalEntryResolver {
     this.viewContainerRef.createComponent(componentFactory, 0, injector);
   }
 
-  /** @internal */
   ngOnChanges(changes: SimpleChanges) {
     if (changes.modalIndex) {
       this.modalRef.setIndex(changes.modalIndex.currentValue);

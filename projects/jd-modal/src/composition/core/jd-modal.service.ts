@@ -121,7 +121,6 @@ export class JdModalService {
 
   /**
    * 모달의 갯 수 변경사항 알림.
-   * @internal
    */
   protected dispatchChangeState(): void {
     this.modalsSubject.next(this.getState());
@@ -150,7 +149,6 @@ export class JdModalService {
 
   /**
    * 핸들러: 모달 상태 변경
-   * @internal
    */
   protected onChangeModalState(): void {
     if (this.useBlockBodyScroll) {
@@ -160,7 +158,6 @@ export class JdModalService {
 
   /**
    * body block 스크롤 처리
-   * @internal
    */
   protected touchBlockBodyScroll() {
     if (this.blockBodyStyleBeforeOverflow === null) {
