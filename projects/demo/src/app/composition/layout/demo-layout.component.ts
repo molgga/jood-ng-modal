@@ -1,37 +1,11 @@
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer, MatDrawerMode } from '@angular/material/sidenav';
-import { NavigationEnd, Router, RouterEvent, ActivatedRoute, Data } from '@angular/router';
-import { Subject } from 'rxjs';
-import { filter, map, takeUntil } from 'rxjs/operators';
-
-function createAsideRouteList() {
-  return [
-    {
-      title: '',
-      children: [
-        {
-          path: '/getting-started',
-          key: 'getting-started',
-          title: '설치 및 시작',
-          description: '개발 목표부터 간단하게 시작하기',
-        },
-        {
-          path: '/pass-data-result',
-          key: 'pass-data-result',
-          title: '데이터와 결과 주고받기',
-          description: '데이터를 주고 받는 방법과 Generic 타입까지',
-        },
-        {
-          path: '/open-strategy',
-          key: 'open-strategy',
-          title: 'Open Strategy',
-          description: '모달이 열리는 방식 지정과 이를 확장하는 방법',
-        },
-      ],
-    },
-  ];
-}
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
+import { delay } from '@jood/common/functional';
+import { createNaviList } from '../../routes/create-navi-list';
 
 @Component({
   selector: 'lib-demo-layout',
@@ -54,8 +28,7 @@ export class DemoLayoutComponent implements OnInit {
   }
 
   destroyed = new Subject<void>();
-
-  routeList = createAsideRouteList();
+  routeList = createNaviList();
   routeActivateKey: string = '';
   layoutQueryNarrow = '(max-width: 1200px)';
   drawerMode: MatDrawerMode = 'side';
@@ -89,8 +62,9 @@ export class DemoLayoutComponent implements OnInit {
     }
   }
 
-  onDrawerRouteClick() {
+  async onDrawerRouteClick() {
     if (!this.drawerOpened) {
+      await delay(200);
       this.asideDrawer.close();
     }
   }

@@ -1,14 +1,18 @@
-<div>
-  <mat-form-field appearance="standard">
-    <mat-label>passName</mat-label>
-    <input matInput [(ngModel)]="passName" type="text" />
-  </mat-form-field>
-  &nbsp;
-  <mat-form-field appearance="standard">
-    <mat-label>passCount</mat-label>
-    <input matInput [(ngModel)]="passCount" type="number" />
-  </mat-form-field>
-  &nbsp;
-  <button mat-stroked-button (click)="openModal()">Open</button>
+<div class="fields">
+  <div class="field">
+    <mat-form-field appearance="standard">
+      <mat-label>passName</mat-label>
+      <input matInput [(ngModel)]="passName" type="text" />
+    </mat-form-field>
+  </div>
+  <div class="field">
+    <mat-form-field appearance="standard">
+      <mat-label>passCount</mat-label>
+      <input matInput [(ngModel)]="passCount" type="number" />
+    </mat-form-field>
+  </div>
+  <div class="action">
+    <button mat-stroked-button color="primary" (click)="openModal()">Open</button>
+  </div>
 </div>
 <div class="result-print"><span class="result-label">resultData:</span> {{ resultData | json }}</div>
