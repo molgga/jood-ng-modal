@@ -35,6 +35,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@jood/common": "^0.4.3",
     "csstype": ">=2",
     "ngx-highlightjs": "^6.1.0",
     "raw-loader": "^4.0.2",

@@ -1,6 +1,25 @@
 :host {
   display: block;
 }
+.fields {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 -5px;
+  .field {
+    flex: 1;
+    margin: 0 5px;
+    mat-form-field {
+      width: 100%;
+      ::ng-deep .mat-form-field-infix {
+        width: auto !important;
+      }
+    }
+  }
+  .action {
+    margin: 0 5px;
+    padding-bottom: 1.34375em;
+  }
+}
 .result-print {
   white-space: pre-wrap;
   padding: 10px;
