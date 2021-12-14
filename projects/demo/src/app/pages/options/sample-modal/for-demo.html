@@ -1,14 +1,7 @@
-<div class="pass-print"><span class="pass-label">passData:</span> {{ passData | json }}</div>
-<div>
-  <mat-form-field appearance="standard">
-    <mat-label>resultName</mat-label>
-    <input matInput [(ngModel)]="resultName" type="text" />
-  </mat-form-field>
+<div class="test-options">
+  <div class="print">{{ testOptions | json }}</div>
 </div>
-<div>
-  <mat-form-field appearance="standard">
-    <mat-label>resultCount</mat-label>
-    <input matInput [(ngModel)]="resultCount" type="number" />
-  </mat-form-field>
+<div class="actions">
+  <button class="btn" mat-stroked-button color="primary" (click)="openModal()">Open modal</button>
+  <button class="btn" mat-stroked-button color="secondary" (click)="closeModal()">Close modal</button>
 </div>
-<button mat-stroked-button (click)="close()">Pass Result&Close</button>

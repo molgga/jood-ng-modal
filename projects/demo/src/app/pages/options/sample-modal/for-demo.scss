@@ -1,16 +1,22 @@
 :host {
   display: block;
-  padding: 20px;
+  width: 320px;
+  height: 100%; // with fullHeight
   background: #fff;
 }
-.pass-print {
-  white-space: pre-wrap;
-  padding: 10px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  background: #f0f0f0;
+.test-options {
+  padding: 20px;
+  .print {
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }
-.pass-label {
-  font-size: 12px;
-  color: #666;
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px 20px 20px;
+  .btn {
+    margin: 2px;
+  }
 }

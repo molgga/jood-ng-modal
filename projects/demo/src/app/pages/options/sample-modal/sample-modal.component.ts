@@ -1,14 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { JdModalRef, JdModalRefToken } from '@jood/ng-modal';
+import { JdModalRef, JdModalRefToken, JdModalService, ModalData } from '@jood/ng-modal';
+
+export type SampleOptions = Omit<ModalData, 'component' | 'entryComponent' | 'data'>;
 
 export interface SampleModalData {
-  passName: string;
-  passCount: number;
-}
-
-export interface SampleModalResult {
-  resultName: string;
-  resultCount: number;
+  testOptions: SampleOptions;
 }
 
 @Component({
@@ -17,19 +13,27 @@ export interface SampleModalResult {
   styleUrls: ['./for-demo.scss'],
 })
 export class SampleModalComponent implements OnInit {
-  constructor(@Inject(JdModalRefToken) private modalRef: JdModalRef<SampleModalResult, SampleModalData>) {}
-
-  passData: SampleModalData | null = null;
-  resultName: string = '';
-  resultCount: number = 0;
-
-  ngOnInit() {
-    this.passData = this.modalRef.data;
-    this.resultName = `Hello ${this.passData?.passName || ''}`;
-    this.resultCount = (this.passData?.passCount || 0) * 1000;
+  constructor(
+    private modalService: JdModalService,
+    @Inject(JdModalRefToken) private modalRef: JdModalRef<void, SampleModalData>
+  ) {
+    this.testOptions = this.modalRef.data?.testOptions || {};
   }
 
-  close() {
-    this.modalRef.close({ resultName: this.resultName, resultCount: this.resultCount });
+  testOptions!: SampleOptions;
+
+  ngOnInit() {}
+
+  openModal() {
+    const testOptions = this.modalRef.data?.testOptions || {};
+    this.modalService.open<void, SampleModalData>({
+      component: SampleModalComponent,
+      ...this.testOptions,
+      data: { testOptions: this.testOptions },
+    });
+  }
+
+  closeModal() {
+    this.modalRef.close();
   }
 }

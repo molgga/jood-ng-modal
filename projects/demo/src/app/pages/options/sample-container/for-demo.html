@@ -1,1 +1,24 @@
 <div class="fields">1</div>
+
+<div class="fields">
+  <mat-checkbox [(ngModel)]="options.overlayClose">overlayClose</mat-checkbox>
+</div>
+<div class="fields">
+  <mat-checkbox [(ngModel)]="options.disableShadow">disableShadow</mat-checkbox>
+</div>
+<div class="fields">
+  <mat-checkbox [(ngModel)]="options.floatingMode">floatingMode</mat-checkbox>
+</div>
+<div class="fields">
+  <mat-checkbox [(ngModel)]="options.fullHeight">fullHeight</mat-checkbox>
+</div>
+<div class="fields">
+  <mat-form-field class="example-margin" appearance="standard">
+    <mat-label>duration</mat-label>
+    <input matInput type="number" [(ngModel)]="options.duration" [max]="1000" [min]="100" [step]="100" />
+  </mat-form-field>
+</div>
+
+<div class="fields">
+  <button mat-stroked-button color="primary" class="exm-stack-btn" (click)="openModal()">openModal</button>
+</div>
