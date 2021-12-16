@@ -1,5 +1,3 @@
-<div class="fields">1</div>
-
 <div class="fields">
   <mat-checkbox [(ngModel)]="options.overlayClose">overlayClose</mat-checkbox>
 </div>
@@ -15,7 +13,7 @@
 <div class="fields">
   <mat-form-field class="example-margin" appearance="standard">
     <mat-label>duration</mat-label>
-    <input matInput type="number" [(ngModel)]="options.duration" [max]="1000" [min]="100" [step]="100" />
+    <input matInput type="number" [(ngModel)]="options.duration" [step]="10" />
   </mat-form-field>
 </div>
 

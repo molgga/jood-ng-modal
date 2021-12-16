@@ -14,7 +14,7 @@ export class SampleContainerComponent implements OnInit {
   ngOnInit() {}
 
   options: SampleOptions = {
-    duration: 300,
+    duration: 280,
     overlayClose: true,
     disableShadow: true,
     floatingMode: true,
