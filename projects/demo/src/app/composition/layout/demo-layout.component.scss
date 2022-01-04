@@ -11,8 +11,8 @@
     z-index: 100;
     .hbar {
       flex: 1;
-      padding-left: 8px;
-      padding-right: 8px;
+      padding-left: 4px;
+      padding-right: 4px;
     }
     .bside {
       padding-right: 15px;
@@ -39,8 +39,8 @@
     }
     .bar {
       position: absolute;
-      left: 15px;
-      width: 20px;
+      left: 17px;
+      width: 16px;
       height: 2px;
       background: #fff;
       &.b1 {
@@ -61,7 +61,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     .anchor {
       position: relative;
       display: flex;
@@ -91,7 +91,7 @@
         .desc {
           display: block;
           font-size: 0.75rem;
-          color: var(--jdmi-color-9);
+          color: var(--jdmi-color-8);
         }
         &:before {
           content: "";
@@ -100,16 +100,13 @@
           bottom: 0;
           right: 0;
           width: 3px;
-          background: var(--jdmi-color-3);
+          background: var(--jdmi-color-primary);
           opacity: 0;
         }
       }
       &.activate {
         .anchor {
-          color: var(--jdmi-color-2);
-          .label {
-            font-weight: 500;
-          }
+          color: var(--jdmi-color-primary);
           &:before {
             opacity: 1;
           }
