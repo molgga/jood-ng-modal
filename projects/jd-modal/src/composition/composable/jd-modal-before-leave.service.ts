@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { JdModalService } from '../core/jd-modal.service';
 import { JdModalRefToken, JdModalRef } from '../core/jd-modal.ref';
 import { ModalPopStateEvent } from '../core/types';
+import { sleep } from '../../utils';
 
 type CastFunction<T> = () => T | Promise<T>;
 
@@ -41,11 +42,8 @@ export class JdModalBeforeLeaveService {
       } else {
         evt.preventModalClose = true;
         this.holdBeforeLeave = true;
-        history.forward(); // 브라우저는 이미 뒤로가기가 되어서 다시 forwad 시킴.
-        await new Promise((resolve) => {
-          // history.forward 는 비동기이기 때문에 밑에 confirm 창을 시스템 컨펌창을 띠우게 되면 forward 동작이 안된 상태에서 멈추게 될 수도 있다.
-          setTimeout(() => resolve(true), 30);
-        });
+        history.forward(); // 브라우저는 이미 뒤로가기가 되어서 다시 forward 시킴.
+        await sleep(100); // history.forward 는 비동기이기 때문에 브라우저의 forward 동작이 처리되기 전 밑의 동작이 실행될 수 있어서 일정시간 대기 시킨다.
         const confirm = await this.fnConfirm();
         if (!confirm) {
           this.holdBeforeLeave = false;
