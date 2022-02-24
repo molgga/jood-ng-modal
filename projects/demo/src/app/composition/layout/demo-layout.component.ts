@@ -64,7 +64,7 @@ export class DemoLayoutComponent implements OnInit {
 
   async onDrawerRouteClick() {
     if (!this.drawerOpened) {
-      await delay(200);
+      await delay(300);
       this.asideDrawer.close();
     }
   }
