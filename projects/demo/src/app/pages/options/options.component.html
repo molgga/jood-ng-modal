@@ -5,38 +5,41 @@
 </jdmi-section>
 
 <jdmi-section>
-  <jdmi-h3>overlayClose</jdmi-h3>
-  <jdmi-p>overlay 영역 클릭시 닫기 여부</jdmi-p>
-</jdmi-section>
-
-<jdmi-section>
-  <jdmi-h3>disableShadow</jdmi-h3>
-  <jdmi-p>openStrategy 의 shadow 처리 여부</jdmi-p>
   <jdmi-p>
-    css box-shadow + animate 는 가벼운 동작이 아니기 shadow 를 사용하지 않는것 만으로도 꽤 나은 퍼포먼스를 보여주는
-    경우를 많이 보았습니다. shadow 를 제거하는 방법으로 적합한 방법은 OpenStrategy 직접 만들고 shadow 관련 값을 사용하지
-    않으면 되지만, OpenStrategy 에 대한 이해가 어느 정도 쌓였을때 가능할것으로 예상되기 때문에 별도 옵션으로 제공합니다.
+    <ul class="jdmi-p-ul">
+      <li class="jdmi-p-li">
+        <jdmi-h4>overlayClose</jdmi-h4>
+        <jdmi-p>overlay 영역 클릭시 닫기 여부</jdmi-p>
+      </li>
+      <li class="jdmi-p-li">
+        <jdmi-h4>disableShadow</jdmi-h4>
+        <jdmi-p>
+          openStrategy 의 shadow 처리 여부<br />
+          css box-shadow + animate 는 가벼운 동작이 아니기 shadow 를 사용하지 않는것 만으로도 꽤 나은 퍼포먼스를
+          보여주는 경우를 많이 보았습니다. shadow 를 제거하는 방법으로 적합한 방법은 OpenStrategy 직접 만들고 shadow
+          관련 값을 사용하지 않으면 되지만, OpenStrategy 에 대한 이해가 어느 정도 쌓였을때 가능할것으로 예상되기 때문에
+          별도 옵션으로 제공합니다.
+        </jdmi-p>
+      </li>
+      <li class="jdmi-p-li">
+        <jdmi-h4>floatingMode</jdmi-h4>
+        <jdmi-p>
+          OpenStrategy 와 관련이 있습니다. 해당 옵션이 false 인 경우 OpenStrategy 의 opening 을 사용하고, true 인 경우
+          floatingOpening 을 사용합니다.
+        </jdmi-p>
+      </li>
+      <li class="jdmi-p-li">
+        <jdmi-h4>fullHeight</jdmi-h4>
+        <jdmi-p>
+          해당 옵션은 모달(component)를 감싸는 레이어의 height 를 100% 로 만듭니다. 항상 레이어의 width 보다 처리하기
+          어려운건 height 입니다. 대부분의 최신 브라우저가 지원하는 vh 단위가 있지만, 이것만으로 해결하기 어려운 경우가
+          있다면 사용합니다.
+        </jdmi-p>
+      </li>
+      <li class="jdmi-p-li">
+        <jdmi-h4>duration</jdmi-h4>
+        <jdmi-p>모달의 애니메이션 속도 입니다.</jdmi-p>
+      </li>
+    </ul>
   </jdmi-p>
-</jdmi-section>
-
-<jdmi-section>
-  <jdmi-h3>floatingMode</jdmi-h3>
-  <jdmi-p>
-    OpenStrategy 와 관련이 있습니다. 해당 옵션이 false 인 경우 OpenStrategy 의 opening 을 사용하고, true 인 경우
-    floatingOpening 을 사용합니다.
-  </jdmi-p>
-</jdmi-section>
-
-<jdmi-section>
-  <jdmi-h3>fullHeight</jdmi-h3>
-  <jdmi-p>
-    해당 옵션은 모달(component)를 감싸는 레이어의 height 를 100% 로 만듭니다. 항상 레이어의 width 보다 처리하기 어려운건
-    height 입니다. 대부분의 최신 브라우저가 지원하는 vh 단위가 있지만, 이것만으로 해결하기 어려운 경우가 있다면
-    사용합니다.
-  </jdmi-p>
-</jdmi-section>
-
-<jdmi-section>
-  <jdmi-h3>duration</jdmi-h3>
-  <jdmi-p>모달의 애니메이션 속도 입니다.</jdmi-p>
 </jdmi-section>
