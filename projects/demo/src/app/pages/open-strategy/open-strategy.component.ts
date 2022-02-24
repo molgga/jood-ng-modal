@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { JdModalService, OpenStrategy } from '@jood/ng-modal';
-import { CustomOpenStrategy } from './custom-open-strategy';
+import { JdModalService } from '@jood/ng-modal';
 import { getSampleStrategy } from './getSampleStrategy';
-import { ModalBoxComponent } from './modal-box/modal-box.component';
 import { SampleStrategyComponent } from './sample-strategy/sample-strategy.component';
+import { CustomOpenStrategy } from './custom-open-strategy';
+import { CustomOpenModalComponent } from './custom-open-modal/custom-open-modal.component';
+import { FullBodyStrategy } from './full-body-strategy';
+import { FullBodyModalComponent } from './full-body-modal/full-body-modal.component';
 
 @Component({
   selector: 'lib-open-strategy',
@@ -20,16 +22,6 @@ export class OpenStrategyComponent implements OnInit {
   codeModalBoxComponent = require('!raw-loader!./code/codeModalBoxComponent.txt').default;
   codeEntryHtml = require('!raw-loader!./code/codeEntryHtml.txt').default;
 
-  onOpen() {
-    this.modalService.open({
-      component: ModalBoxComponent,
-      openStrategy: new CustomOpenStrategy(),
-      duration: 360,
-      overlayClose: true,
-      floatingMode: true,
-    });
-  }
-
   onOpenSampleStrategy(sampleStrategy: string) {
     const sampleOptions = getSampleStrategy(sampleStrategy);
     this.modalService.open({
@@ -38,6 +30,26 @@ export class OpenStrategyComponent implements OnInit {
       floatingMode: true,
       data: { sampleStrategy },
       ...sampleOptions,
+    });
+  }
+
+  onOpenCustomOpenStrategy() {
+    this.modalService.open({
+      component: CustomOpenModalComponent,
+      openStrategy: new CustomOpenStrategy(),
+      duration: 360,
+      overlayClose: true,
+      floatingMode: true,
+    });
+  }
+
+  onOpenFullBodyStrategy() {
+    this.modalService.open({
+      component: FullBodyModalComponent,
+      openStrategy: new FullBodyStrategy(),
+      duration: 360,
+      overlayClose: true,
+      floatingMode: false,
     });
   }
 }
